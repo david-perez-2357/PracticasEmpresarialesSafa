@@ -6,7 +6,7 @@ Crear un archivo llamado .env en `src > main > java` que contenga los siguientes
 
 ```env
 DB_LANGUAGE="mariadb"      // mariadb, mysql, postgresql, oracle, sqlserver
-DB_USERNAME="root"         // insert your username
-DB_PASSWORD="1234"         // insert your password
-DB_DATABASE="example"      // insert your database
+DB_USERNAME="root"         // Reemplazar por tu usuario
+DB_PASSWORD="1234"         // Reemplazar por tu contraseña
+DB_DATABASE="practicasEmpresariales"      // Reemplazar por la base de datos que quieras utilizar
 ```
