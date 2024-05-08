@@ -32,7 +32,7 @@
     -fx-background-color: #343a40;
 }
 
-/*------------------------Background light---*/
+/*------------------------Backgrounds light---*/
 .bg-primary-light {
     -fx-background-color: #cce5ff;
 }
@@ -117,6 +117,55 @@
 .btn-link {
     -fx-background-color: transparent;
     -fx-text-fill: #007bff;
+}
+
+/*------------------------Buttons outline---*/
+.btn-outline-primary {
+    -fx-background-color: transparent;
+    -fx-border-color: #007bff;
+    -fx-text-fill: #007bff;
+}
+
+.btn-outline-secondary {
+    -fx-background-color: transparent;
+    -fx-border-color: #6c757d;
+    -fx-text-fill: #6c757d;
+}
+
+.btn-outline-success {
+    -fx-background-color: transparent;
+    -fx-border-color: #28a745;
+    -fx-text-fill: #28a745;
+}
+
+.btn-outline-danger {
+    -fx-background-color: transparent;
+    -fx-border-color: #dc3545;
+    -fx-text-fill: #dc3545;
+}
+
+.btn-outline-warning {
+    -fx-background-color: transparent;
+    -fx-border-color: #ffc107;
+    -fx-text-fill: #ffc107;
+}
+
+.btn-outline-info {
+    -fx-background-color: transparent;
+    -fx-border-color: #17a2b8;
+    -fx-text-fill: #17a2b8;
+}
+
+.btn-outline-light {
+    -fx-background-color: transparent;
+    -fx-border-color: #f8f9fa;
+    -fx-text-fill: #f8f9fa;
+}
+
+.btn-outline-dark {
+    -fx-background-color: transparent;
+    -fx-border-color: #343a40;
+    -fx-text-fill: #343a40;
 }
 
 /*------------------------Text colors---*/
