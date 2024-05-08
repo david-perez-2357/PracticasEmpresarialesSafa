@@ -10,32 +10,17 @@ import java.util.Scanner;
 public class Database {
     protected Connection connection;
     protected final String url;
-    protected final String username;
-    protected final String dataBase;
-    protected final String password;
-    protected final String language;
+    protected final String username = System.getenv("DB_USERNAME");
+    protected final String dataBase = System.getenv("DB_DATABASE");
+    protected final String password = System.getenv("DB_PASSWORD");
+    protected final String language = System.getenv("DB_LANGUAGE");
 
     /**
      * Constructor
      */
     public Database() throws SQLException {
         Scanner scanner = new Scanner(System.in);
-
-        if (this.language == null || this.dataBase == null || this.username == null || this.password == null) {
-            System.out.println("\nEnter the language of the database (mariadb, mysql, etc): ");
-            this.language = scanner.nextLine();
-
-            System.out.println("\nEnter the name of the database: ");
-            this.dataBase = scanner.nextLine();
-
-            System.out.println("\nEnter the username: ");
-            this.username = scanner.nextLine();
-
-            System.out.println("\nEnter the password: ");
-            this.password = scanner.nextLine();
-
-            this.url = "jdbc:" + language + "://localhost:3306/" + dataBase;
-        }
+        this.url = "jdbc:" + language + "://localhost:3306/" + dataBase;
 
         this.connect();
     }
