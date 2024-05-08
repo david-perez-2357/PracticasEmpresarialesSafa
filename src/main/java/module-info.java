@@ -4,6 +4,7 @@ module main.practicasempresarialessafa {
 
     requires org.controlsfx.controls;
     requires org.kordamp.bootstrapfx.core;
+    requires java.sql;
 
     opens pages to javafx.fxml;
     exports core.apps;
