@@ -70,7 +70,7 @@
                         <id>default-cli</id>
                         <configuration>
                             <mainClass>
-                                main.practicasempresarialessafa/main.practicasempresarialessafa.HelloApplication
+                                main.practicasempresarialessafa/core.apps.HelloApplication
                             </mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>

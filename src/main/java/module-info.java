@@ -5,6 +5,9 @@ module main.practicasempresarialessafa {
     requires org.controlsfx.controls;
     requires org.kordamp.bootstrapfx.core;
 
-    opens main.practicasempresarialessafa to javafx.fxml;
-    exports main.practicasempresarialessafa;
+    opens pages to javafx.fxml;
+    exports core.apps;
+    opens core.apps to javafx.fxml;
+    exports core.controllers;
+    opens core.controllers to javafx.fxml;
 }

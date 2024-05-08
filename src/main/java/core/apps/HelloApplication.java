@@ -1,4 +1,4 @@
-package main.practicasempresarialessafa;
+package core.apps;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
