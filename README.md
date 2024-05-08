@@ -5,8 +5,8 @@ Proyecto realizado por David Pérez Fernández en Java FX para la asignatura de 
 Crear un archivo llamado .env en `src > main > java` que contenga los siguientes campos:
 
 ```env
-DB_LANGUAGE="mariadb"      // mariadb, mysql, postgresql, oracle, sqlserver
-DB_USERNAME="root"         // Reemplazar por tu usuario
-DB_PASSWORD="1234"         // Reemplazar por tu contraseña
-DB_DATABASE="practicasEmpresariales"      // Reemplazar por la base de datos que quieras utilizar
+DB_LANGUAGE="mariadb"                      // mariadb, mysql, postgresql, oracle, sqlserver
+DB_USERNAME="root"                         // Reemplazar por tu usuario
+DB_PASSWORD="1234"                         // Reemplazar por tu contraseña
+DB_DATABASE="practicasEmpresariales"       // Reemplazar por la base de datos que quieras utilizar
 ```
