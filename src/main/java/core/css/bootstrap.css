@@ -1,0 +1,259 @@
+
+/*------------------------Backgrounds--*/
+.bg-primary {
+    -fx-background-color: #007bff;
+}
+
+.bg-secondary {
+    -fx-background-color: #6c757d;
+}
+
+.bg-success {
+    -fx-background-color: #28a745;
+}
+
+.bg-danger {
+    -fx-background-color: #dc3545;
+}
+
+.bg-warning {
+    -fx-background-color: #ffc107;
+}
+
+.bg-info {
+    -fx-background-color: #17a2b8;
+}
+
+.bg-light {
+    -fx-background-color: #f8f9fa;
+}
+
+.bg-dark {
+    -fx-background-color: #343a40;
+}
+
+/*------------------------Background light---*/
+.bg-primary-light {
+    -fx-background-color: #cce5ff;
+}
+
+.bg-secondary-light {
+    -fx-background-color: #e2e3e5;
+}
+
+.bg-success-light {
+    -fx-background-color: #d4edda;
+}
+
+.bg-danger-light {
+    -fx-background-color: #f8d7da;
+}
+
+.bg-warning-light {
+    -fx-background-color: #fff3cd;
+}
+
+.bg-info-light {
+    -fx-background-color: #d1ecf1;
+}
+
+.bg-light-light {
+    -fx-background-color: #fefefe;
+}
+
+.bg-dark-light {
+    -fx-background-color: #d6d8d9;
+}
+
+/*------------------------Buttons---*/
+.btn {
+    -fx-background-color: #007bff;
+    -fx-text-fill: #fff;
+    -fx-font-size: 14px;
+    -fx-padding: 8px 16px;
+    -fx-border-radius: 4px;
+}
+
+.btn-primary {
+    -fx-background-color: #007bff;
+    -fx-text-fill: #fff;
+}
+
+.btn-secondary {
+    -fx-background-color: #6c757d;
+    -fx-text-fill: #fff;
+}
+
+.btn-success {
+    -fx-background-color: #28a745;
+    -fx-text-fill: #fff;
+}
+
+.btn-danger {
+    -fx-background-color: #dc3545;
+    -fx-text-fill: #fff;
+}
+
+.btn-warning {
+    -fx-background-color: #ffc107;
+    -fx-text-fill: #212529;
+}
+
+.btn-info {
+    -fx-background-color: #17a2b8;
+    -fx-text-fill: #fff;
+}
+
+.btn-light {
+    -fx-background-color: #f8f9fa;
+    -fx-text-fill: #212529;
+}
+
+.btn-dark {
+    -fx-background-color: #343a40;
+    -fx-text-fill: #fff;
+}
+
+.btn-link {
+    -fx-background-color: transparent;
+    -fx-text-fill: #007bff;
+}
+
+/*------------------------Text colors---*/
+.text-primary {
+    -fx-text-fill: #007bff;
+}
+
+.text-secondary {
+    -fx-text-fill: #6c757d;
+}
+
+.text-success {
+    -fx-text-fill: #28a745;
+}
+
+.text-danger {
+    -fx-text-fill: #dc3545;
+}
+
+.text-warning {
+    -fx-text-fill: #ffc107;
+}
+
+.text-info {
+    -fx-text-fill: #17a2b8;
+}
+
+.text-light {
+    -fx-text-fill: #f8f9fa;
+}
+
+.text-dark {
+    -fx-text-fill: #343a40;
+}
+
+/*------------------------Alerts---*/
+.alert-container {
+    -fx-padding: 10px;
+    -fx-margin-bottom: 10px;
+    -fx-border-width: 1px;
+    -fx-border-radius: 4px;
+}
+
+.alert-primary {
+    -fx-background-color: #cce5ff;
+    -fx-text-fill: #004085;
+    -fx-border-color: #b8daff;
+}
+
+.alert-secondary {
+    -fx-background-color: #e2e3e5;
+    -fx-text-fill: #383d41;
+    -fx-border-color: #d6d8db;
+}
+
+.alert-success {
+    -fx-background-color: #d4edda;
+    -fx-text-fill: #155724;
+    -fx-border-color: #c3e6cb;
+}
+
+.alert-danger {
+    -fx-background-color: #f8d7da;
+    -fx-text-fill: #721c24;
+    -fx-border-color: #f5c6cb;
+}
+
+.alert-warning {
+    -fx-background-color: #fff3cd;
+    -fx-text-fill: #856404;
+    -fx-border-color: #ffeeba;
+}
+
+.alert-info {
+    -fx-background-color: #d1ecf1;
+    -fx-text-fill: #0c5460;
+    -fx-border-color: #bee5eb;
+}
+
+.alert-light {
+    -fx-background-color: #fefefe;
+    -fx-text-fill: #818182;
+    -fx-border-color: #fdfdfe;
+}
+
+.alert-dark {
+    -fx-background-color: #d6d8d9;
+    -fx-text-fill: #1b1e21;
+    -fx-border-color: #c6c8ca;
+}
+
+/*------------------------Table view---*/
+.table-view {
+    -fx-background-color: #fff;
+    -fx-padding: 10px;
+    -fx-border-width: 1px;
+    -fx-border-color: #dee2e6;
+    -fx-border-radius: 4px;
+}
+
+.table-view .column-header {
+    -fx-background-color: #f8f9fa;
+    -fx-border-width: 1px;
+    -fx-border-color: #dee2e6;
+    -fx-font-weight: bold;
+    -fx-padding: 8px;
+}
+
+.table-view .cell {
+    -fx-padding: 8px;
+    -fx-border-width: 1px;
+    -fx-border-color: #dee2e6;
+}
+
+.table-view .cell:odd {
+    -fx-background-color: #f8f9fa;
+}
+
+/*------------------------Combo box---*/
+.combo-box {
+    -fx-background-color: #fff;
+    -fx-border-color: #ced4da;
+    -fx-border-radius: 4px;
+    -fx-padding: 8px;
+}
+
+.combo-box .arrow-button {
+    -fx-background-color: #e9ecef;
+    -fx-border-color: #ced4da;
+    -fx-border-radius: 0 4px 4px 0;
+}
+
+.combo-box .arrow-button .arrow {
+    -fx-background-color: transparent;
+    -fx-fill: #495057;
+}
+
+.combo-box .list-cell {
+    -fx-padding: 8px;
+}
