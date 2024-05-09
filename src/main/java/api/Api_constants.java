@@ -11,7 +11,7 @@ public class Api_constants {
         try {
             db = new Database();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new ExceptionInInitializerError("Error loading database connection");
         }
     }
 }
