@@ -1,5 +1,6 @@
 package api.services;
 
+import api.database.Database;
 import api.models.Person;
 import api.models.Role;
 
@@ -8,8 +9,17 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * PersonService
+ */
 public class PersonService {
-    public List<Person> convertToPeopleObjects(ResultSet resultSet) throws SQLException {
+    /**
+     * Convert a ResultSet into a list of Person objects
+     * @param resultSet ResultSet
+     * @return List<Person>
+     * @throws SQLException Exception
+     */
+    public static List<Person> convertToPeopleObjects(ResultSet resultSet) throws SQLException {
         List<Person> result = new ArrayList<>();
 
         // Loop through the ResultSet and create a new Person object
