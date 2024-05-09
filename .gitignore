@@ -46,4 +46,4 @@ build/
 ### Mac OS ###
 .DS_Store
 
-src/main/java/.env
+src/main/resources/.env
