@@ -411,7 +411,7 @@
     -fx-background-color: #fff;
     -fx-border-color: #ced4da;
     -fx-border-radius: 4px;
-    -fx-padding: 8px;
+    /*-fx-padding: 8px;*/
 }
 
 /*------------------------Badges---*/
