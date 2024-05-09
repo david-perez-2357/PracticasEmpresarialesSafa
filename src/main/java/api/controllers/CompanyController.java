@@ -1,6 +1,7 @@
 package api.controllers;
 
 import api.models.Company;
+import javafx.collections.ObservableList;
 
 import java.sql.SQLException;
 import java.util.List;
