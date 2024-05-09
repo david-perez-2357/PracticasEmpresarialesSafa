@@ -6,6 +6,7 @@ module main.practicasempresarialessafa {
     requires org.kordamp.bootstrapfx.core;
     requires java.sql;
     requires lombok;
+    requires mysql.connector.j;
 
     opens pages to javafx.fxml;
     exports core.apps;
