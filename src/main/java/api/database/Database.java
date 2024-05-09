@@ -5,8 +5,10 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Scanner;
 
+/**
+ * Database class
+ */
 public class Database {
     protected Connection connection;
     protected final String url;
@@ -19,7 +21,6 @@ public class Database {
      * Constructor
      */
     public Database() throws SQLException {
-        Scanner scanner = new Scanner(System.in);
         this.url = "jdbc:" + language + "://localhost:3306/" + dataBase;
 
         this.connect();
@@ -27,7 +28,7 @@ public class Database {
 
     /**
      * Connect to the database
-     * @throws SQLException
+     * @throws SQLException If there is an error connecting to the database
      */
     public void connect() throws SQLException {
         try {
@@ -35,13 +36,13 @@ public class Database {
             connection = DriverManager.getConnection(url, username, password);
 
         } catch (ClassNotFoundException e) {
-            throw new SQLException("Error loading JDBC driver", e);
+            throw new SQLException("Error loading JDBC driver");
         }
     }
 
     /**
      * Disconnect from the database
-     * @throws SQLException
+     * @throws SQLException If there is an error disconnecting from the database
      */
     public void disconnect() throws SQLException {
         if (connection != null && !connection.isClosed()) {
@@ -51,9 +52,9 @@ public class Database {
 
     /**
      * Execute a query that returns a ResultSet
-     * @param query
-     * @return ResultSet
-     * @throws SQLException
+     * @param query The SQL query to execute
+     * @return ResultSet The ResultSet object
+     * @throws SQLException If there is an error executing the query
      */
     public ResultSet executeQuery(String query) throws SQLException {
         try {
@@ -67,77 +68,77 @@ public class Database {
 
     /**
      * Execute an update, insert or delete query
-     * @param query
-     * @return rows affected
-     * @throws SQLException
+     * @param query The SQL query to execute
+     * @return rows affected by the query
+     * @throws SQLException If there is an error executing the query
      */
     public int executeUpdate(String query) throws SQLException {
         try {
             PreparedStatement statement = connection.prepareStatement(query);
             return statement.executeUpdate();
         }catch (SQLException e) {
-            throw new SQLException("Error executing query", e);
+            throw new SQLException("Error executing query");
         }
     }
 
     /**
-     * Inicia una transacción en la base de datos
-     * @throws SQLException
+     * Begin a transaction in the database
+     * @throws SQLException If there is an error
      */
     public void beginTransaction() throws SQLException {
         try {
-            connection.setAutoCommit(false); // Desactiva el modo de autocommit para comenzar la transacción
+            connection.setAutoCommit(false); // Disable autocommit
         } catch (SQLException e) {
-            throw new SQLException("Error starting transaction", e);
+            throw new SQLException("Error starting transaction");
         }
     }
 
     /**
-     * Confirma la transacción en la base de datos
-     * @throws SQLException
+     * Commit the transaction in the database
+     * @throws SQLException If there is an error committing the transaction
      */
     public void commitTransaction() throws SQLException {
         try {
-            connection.commit(); // Confirma la transacción
-            connection.setAutoCommit(true); // Restaura el modo de autocommit
+            connection.commit(); // Commit the transaction
+            connection.setAutoCommit(true); // Restore autocommit mode
         } catch (SQLException e) {
-            throw new SQLException("Error committing transaction", e);
+            throw new SQLException("Error committing transaction");
         }
     }
 
     /**
-     * Cancela la transacción en la base de datos
-     * @throws SQLException
+     * Rollback the transaction in the database
+     * @throws SQLException If there is an error rolling back the transaction
      */
     public void rollbackTransaction() throws SQLException {
         try {
-            connection.rollback(); // Cancela la transacción
-            connection.setAutoCommit(true); // Restaura el modo de autocommit
+            connection.rollback(); // Rollback the transaction
+            connection.setAutoCommit(true); // Restore autocommit mode
         } catch (SQLException e) {
-            throw new SQLException("Error rolling back transaction", e);
+            throw new SQLException("Error rolling back transaction");
         }
     }
 
     /**
-     * Ejecutar una consulta preparada con parámetros
-     * @param query La consulta SQL con parámetros de marcador de posición (?)
-     * @param values Los valores para los parámetros de la consulta
-     * @return El número de filas afectadas por la consulta
-     * @throws SQLException Si hay un error al ejecutar la consulta
+     * Execute a prepared statement
+     * @param query The SQL query to execute
+     * @param values The values to bind to the query
+     * @return The number of rows affected by the query
+     * @throws SQLException If there is an error executing the prepared statement
      */
     public int executePreparedStatement(String query, Object... values) throws SQLException {
         try {
             PreparedStatement statement = connection.prepareStatement(query);
 
-            // Asignar los valores a los parámetros de la consulta
+            // Bind the values to the query
             for (int i = 0; i < values.length; i++) {
                 statement.setObject(i + 1, values[i]);
             }
 
-            // Ejecutar la consulta y retornar el número de filas afectadas
+            // Execute the query
             return statement.executeUpdate();
         } catch (SQLException e) {
-            throw new SQLException("Error executing prepared statement", e);
+            throw new SQLException("Error executing prepared statement");
         }
     }
 
