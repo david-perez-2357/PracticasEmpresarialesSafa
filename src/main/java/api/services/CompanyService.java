@@ -11,6 +11,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import static api.Api_constants.db;
+
 /**
  * CompanyService
  */
@@ -51,7 +53,6 @@ public class CompanyService {
      * @throws SQLException Exception
      */
     public static ResultSet getAllCompanies() throws SQLException {
-        Database db = new Database();
         return db.executeQuery("""
                     SELECT e.*, j.id AS jornada_id, j.nombre AS jornada_nombre, m.id AS modalidad_id, m.nombre AS modalidad_nombre
                     FROM empresa e

@@ -9,6 +9,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import static api.Api_constants.db;
+
 /**
  * PersonService
  */
@@ -69,7 +71,6 @@ public class PersonService {
      * @throws SQLException Exception
      */
     public static ResultSet getAllPeople() throws SQLException {
-        Database db = new Database();
         return db.executeQuery("""
                     SELECT p.*, r.id as role_id, r.nombre as role_name
                     FROM persona p
@@ -83,7 +84,6 @@ public class PersonService {
      * @throws SQLException Exception
      */
     public static ResultSet getAllRoles() throws SQLException {
-        Database db = new Database();
         return db.executeQuery("SELECT * FROM rol");
     }
 }
