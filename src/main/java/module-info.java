@@ -5,7 +5,7 @@ module main.practicasempresarialessafa {
     requires org.controlsfx.controls;
     requires org.kordamp.bootstrapfx.core;
     requires java.sql;
-    requires lombok;
+    requires static lombok;
     requires mysql.connector.j;
 
     opens pages to javafx.fxml;
