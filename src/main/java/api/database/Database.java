@@ -6,16 +6,18 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import static api.Api_constants.envReader;
+
 /**
  * Database class
  */
 public class Database {
     protected Connection connection;
     protected final String url;
-    protected final String username = System.getenv("DB_USERNAME");
-    protected final String dataBase = System.getenv("DB_DATABASE");
-    protected final String password = System.getenv("DB_PASSWORD");
-    protected final String language = System.getenv("DB_LANGUAGE");
+    protected final String username = envReader.getValue("DB_USERNAME");
+    protected final String dataBase = envReader.getValue("DB_DATABASE");
+    protected final String password = envReader.getValue("DB_PASSWORD");
+    protected final String language = envReader.getValue("DB_LANGUAGE");
 
     /**
      * Constructor
@@ -61,7 +63,7 @@ public class Database {
             PreparedStatement statement = connection.prepareStatement(query);
             return statement.executeQuery();
         }catch (SQLException e) {
-            throw new SQLException("Error executing query", e);
+            throw new SQLException("Error executing query");
         }
 
     }
