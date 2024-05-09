@@ -4,6 +4,7 @@ import lombok.*;
 
 
 @AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
 @ToString(exclude = {
@@ -14,9 +15,7 @@ import lombok.*;
             "location",
             "workday",
             "modality",
-            "email",
-            "workManager",
-            "workTutor"
+            "email"
         })
 @EqualsAndHashCode
 public class Company {
@@ -29,6 +28,4 @@ public class Company {
     private Workday workday;
     private Modality modality;
     private String email;
-    private Person workManager;
-    private Person workTutor;
 }
