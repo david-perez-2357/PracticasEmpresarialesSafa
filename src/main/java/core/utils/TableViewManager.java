@@ -31,6 +31,7 @@ public class TableViewManager<T> {
             Object value = valueFunction.apply(cellData.getValue());
             return new ReadOnlyObjectWrapper<>(value);
         });
+        column.setSortable(true);
         tableView.getColumns().add(column);
     }
 
@@ -56,5 +57,9 @@ public class TableViewManager<T> {
 
     public void removeFilter() {
         filteredData.setPredicate(null);
+    }
+
+    public void refresh() {
+        tableView.refresh();
     }
 }
