@@ -44,4 +44,19 @@ public class CompanyService {
 
         return result;
     }
+
+    /**
+     * Get all companies
+     * @return ResultSet
+     * @throws SQLException Exception
+     */
+    public static ResultSet getAllCompanies() throws SQLException {
+        Database db = new Database();
+        return db.executeQuery("""
+                    SELECT e.*, j.id AS jornada_id, j.nombre AS jornada_nombre, m.id AS modalidad_id, m.nombre AS modalidad_nombre
+                    FROM empresa e
+                    JOIN jornada j ON e.jornada_id = j.id
+                    JOIN modalidad m ON e.modalidad_id = m.id
+                """);
+    }
 }

@@ -42,4 +42,48 @@ public class PersonService {
 
         return result;
     }
+
+    /**
+     * Convert a ResultSet into a list of Role objects
+     * @param resultSet ResultSet
+     * @return List<Role>
+     * @throws SQLException Exception
+     */
+    public static List<Role> convertToRolesObjects(ResultSet resultSet) throws SQLException {
+        List<Role> result = new ArrayList<>();
+
+        // Loop through the ResultSet and create a new Role object
+        while (resultSet.next()) {
+            result.add(new Role(
+                resultSet.getInt("id"),
+                resultSet.getString("name")
+            ));
+        }
+
+        return result;
+    }
+
+    /**
+     * Get all people from the database
+     * @return ResultSet
+     * @throws SQLException Exception
+     */
+    public static ResultSet getAllPeople() throws SQLException {
+        Database db = new Database();
+        return db.executeQuery("""
+                    SELECT p.*, r.id as role_id, r.nombre as role_name
+                    FROM persona p
+                    JOIN rol r ON p.rol_id = r.id
+                """);
+    }
+
+    /**
+     * Get all roles from the database
+     * @return ResultSet
+     * @throws SQLException Exception
+     */
+    public static ResultSet getAllRoles() throws SQLException {
+        Database db = new Database();
+        return db.executeQuery("SELECT * FROM rol");
+    }
 }
