@@ -119,6 +119,42 @@
     -fx-text-fill: #007bff;
 }
 
+.btn-primary:hover {
+    -fx-background-color: #0056b3;
+}
+
+.btn-secondary:hover {
+    -fx-background-color: #5a6268;
+}
+
+.btn-success:hover {
+    -fx-background-color: #218838;
+}
+
+.btn-danger:hover {
+    -fx-background-color: #c82333;
+}
+
+.btn-warning:hover {
+    -fx-background-color: #e0a800;
+}
+
+.btn-info:hover {
+    -fx-background-color: #138496;
+}
+
+.btn-light:hover {
+    -fx-background-color: #dae0e5;
+}
+
+.btn-dark:hover {
+    -fx-background-color: #23272b;
+}
+
+.btn-link:hover {
+    -fx-text-fill: #0056b3;
+}
+
 /*------------------------Buttons outline---*/
 .btn-outline-primary {
     -fx-background-color: transparent;
@@ -166,6 +202,54 @@
     -fx-background-color: transparent;
     -fx-border-color: #343a40;
     -fx-text-fill: #343a40;
+}
+
+.btn-outline-primary:hover {
+    -fx-background-color: #007bff;
+    -fx-border-color: #007bff;
+    -fx-text-fill: #fff;
+}
+
+.btn-outline-secondary:hover {
+    -fx-background-color: #6c757d;
+    -fx-border-color: #6c757d;
+    -fx-text-fill: #fff;
+}
+
+.btn-outline-success:hover {
+    -fx-background-color: #28a745;
+    -fx-border-color: #28a745;
+    -fx-text-fill: #fff;
+}
+
+.btn-outline-danger:hover {
+    -fx-background-color: #dc3545;
+    -fx-border-color: #dc3545;
+    -fx-text-fill: #fff;
+}
+
+.btn-outline-warning:hover {
+    -fx-background-color: #ffc107;
+    -fx-border-color: #ffc107;
+    -fx-text-fill: #212529;
+}
+
+.btn-outline-info:hover {
+    -fx-background-color: #17a2b8;
+    -fx-border-color: #17a2b8;
+    -fx-text-fill: #fff;
+}
+
+.btn-outline-light:hover {
+    -fx-background-color: #f8f9fa;
+    -fx-border-color: #f8f9fa;
+    -fx-text-fill: #212529;
+}
+
+.btn-outline-dark:hover {
+    -fx-background-color: #343a40;
+    -fx-border-color: #343a40;
+    -fx-text-fill: #fff;
 }
 
 /*------------------------Text colors---*/
@@ -284,6 +368,10 @@
     -fx-background-color: #f8f9fa;
 }
 
+.table-view .row-cell:hover {
+    -fx-background-color: #e9ecef;
+}
+
 /*------------------------Combo box---*/
 .combo-box {
     -fx-background-color: #fff;
@@ -306,3 +394,42 @@
 .combo-box .list-cell {
     -fx-padding: 8px;
 }
+
+.combo-box .list-cell:hover {
+    -fx-background-color: #e9ecef;
+}
+
+.combo-box .arrow-button:hover {
+    -fx-background-color: #d6d8db;
+}
+
+.combo-box .arrow-button .arrow:hover {
+    -fx-fill: #212529;
+}
+
+/*------------------------Badges---*/
+.badge {
+    -fx-background-color: #6c757d;
+    -fx-text-fill: #fff;
+    -fx-padding: 0.2em 0.5em;
+    -fx-font-size: 0.8em;
+    -fx-shape: "M 0 0 L 10 0 L 10 10 L 0 10 Z";
+    -fx-background-radius: 5;
+}
+
+.badge-success {
+    -fx-background-color: #28a745;
+}
+
+.badge-danger {
+    -fx-background-color: #dc3545;
+}
+
+.badge-warning {
+    -fx-background-color: #ffc107;
+}
+
+.badge-info {
+    -fx-background-color: #17a2b8;
+}
+
