@@ -7,7 +7,7 @@ import lombok.*;
 @Setter
 @ToString(exclude = {"id"})
 @EqualsAndHashCode
-public class Jornada {
+public class Workday {
     private int id;
-    private String nombre;
+    private String name;
 }

@@ -5,21 +5,20 @@ import lombok.*;
 @AllArgsConstructor
 @Getter
 @Setter
-@ToString(exclude =
-        {
+@ToString(exclude = {
             "id",
             "dni",
-            "telefono",
+            "telephone",
             "email",
-            "rol"
+            "role"
         })
 @EqualsAndHashCode
 public class Persona {
     private int id;
     private String dni;
-    private String nombre;
-    private String apellidos;
-    private int telefono;
+    private String name;
+    private String surnames;
+    private int telephone;
     private String email;
-    private Rol rol;
+    private Role role;
 }

@@ -6,9 +6,9 @@ import lombok.*;
 @Setter
 @ToString(exclude = {"id", "tutor"})
 @EqualsAndHashCode
-public class AlumnoEmpresa {
+public class StudentCompany {
     private int id;
-    private Persona alumno;
+    private Persona student;
     private Persona tutor;
-    private Empresa empresa;
+    private Company company;
 }

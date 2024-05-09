@@ -7,7 +7,7 @@ import lombok.*;
 @Setter
 @ToString(exclude = {"id"})
 @EqualsAndHashCode
-public class Modalidad {
+public class Modality {
     private int id;
-    private String nombre;
+    private String name;
 }
