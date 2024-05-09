@@ -25,7 +25,6 @@ public class ViewCompaniesApp extends Application {
 
         // Initialize the table with the companies
         ViewCompaniesController controller = fxmlLoader.getController();
-        controller.start();
     }
 
     public static void main(String[] args) {

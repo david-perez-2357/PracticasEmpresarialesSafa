@@ -2,8 +2,10 @@ package core.controllers;
 
 import api.models.Company;
 import core.utils.TableViewManager;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -14,14 +16,21 @@ public class ViewCompaniesController {
     @FXML
     private TableView companiesTable;
 
-    public void start() throws SQLException {
+    @FXML
+    private TextField searchInput;
+
+    private TableViewManager<Company> tableViewManager;
+
+    @FXML
+    public void initialize() throws SQLException {
+        tableViewManager = new TableViewManager<>(companiesTable);
+
         // Initialize the table with the companies
-        addCompaniesToTable(companiesTable);
+        addCompaniesToTable();
     }
 
-    public void addCompaniesToTable(TableView companiesTable) throws SQLException {
+    public void addCompaniesToTable() throws SQLException {
         List<Company> companies = getCompanies();
-        TableViewManager<Company> tableViewManager = new TableViewManager<>(companiesTable);
 
         tableViewManager.addColumn("Código", Company::getCompanyCode);
         tableViewManager.addColumn("CIF", Company::getCif);
@@ -34,5 +43,13 @@ public class ViewCompaniesController {
         tableViewManager.addColumn("Email", Company::getEmail);
 
         tableViewManager.addAllData(companies);
+        tableViewManager.refresh();
+    }
+
+    @FXML
+    public void searchInputChanged() {
+        // Filter the table by the search input
+        String searchText = searchInput.getText();
+        tableViewManager.filter(company -> company.getName().toLowerCase().contains(searchText.toLowerCase()));
     }
 }

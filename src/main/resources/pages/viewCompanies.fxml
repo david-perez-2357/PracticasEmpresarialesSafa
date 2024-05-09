@@ -31,7 +31,7 @@
                      <font>
                         <Font size="15.0" />
                      </font></Label>
-                  <TextField fx:id="searchInput" onKeyPressed="#searchInputChanged" styleClass="form-control" />
+                  <TextField fx:id="searchInput" onKeyTyped="#searchInputChanged" styleClass="form-control" />
                </children>
                <HBox.margin>
                   <Insets left="10.0" />
