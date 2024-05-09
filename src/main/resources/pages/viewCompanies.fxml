@@ -1,13 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            prefHeight="400.0" prefWidth="600.0">
-
-</AnchorPane>
+<VBox fx:controller="core.controllers.ViewCompaniesController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="bg-light" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <HBox alignment="BOTTOM_CENTER" prefHeight="76.0" prefWidth="600.0">
+         <children>
+            <Label prefHeight="42.0" prefWidth="151.0" text="Empresas">
+               <font>
+                  <Font name="Yu Gothic UI Regular" size="36.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <HBox maxHeight="19.0" prefHeight="19.0" prefWidth="560.0" VBox.vgrow="ALWAYS">
+         <children>
+            <HBox alignment="CENTER_LEFT" prefHeight="41.0" prefWidth="321.0" spacing="10.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <Label styleClass="text-dark" text="Buscar" />
+                  <TextField styleClass="form-control" />
+               </children>
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+         </children>
+         <VBox.margin>
+            <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+         </VBox.margin>
+      </HBox>
+      <HBox prefHeight="204.0" prefWidth="600.0" VBox.vgrow="ALWAYS">
+         <children>
+            <TableView id="companiesTable" fx:id="companiesTable" prefHeight="200.0" prefWidth="200.0" styleClass="table-view" HBox.hgrow="ALWAYS" />
+         </children>
+         <padding>
+            <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+         </padding>
+      </HBox>
+      <HBox maxHeight="76.0" prefHeight="76.0" prefWidth="600.0" VBox.vgrow="ALWAYS" />
+   </children>
+</VBox>
