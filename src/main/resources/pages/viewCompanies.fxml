@@ -9,23 +9,29 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox fx:controller="core.controllers.ViewCompaniesController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="bg-light" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="core.controllers.ViewCompaniesController">
    <children>
-      <HBox alignment="BOTTOM_CENTER" prefHeight="76.0" prefWidth="600.0">
+      <HBox alignment="CENTER" prefHeight="76.0" prefWidth="600.0" styleClass="bg-success">
          <children>
-            <Label prefHeight="42.0" prefWidth="151.0" text="Empresas">
+            <Label prefHeight="42.0" prefWidth="151.0" styleClass="text-light" text="Empresas">
                <font>
                   <Font name="Yu Gothic UI Regular" size="36.0" />
                </font>
             </Label>
          </children>
+         <VBox.margin>
+            <Insets bottom="20.0" />
+         </VBox.margin>
       </HBox>
       <HBox maxHeight="19.0" prefHeight="19.0" prefWidth="560.0" VBox.vgrow="ALWAYS">
          <children>
             <HBox alignment="CENTER_LEFT" prefHeight="41.0" prefWidth="321.0" spacing="10.0" HBox.hgrow="ALWAYS">
                <children>
-                  <Label styleClass="text-dark" text="Buscar" />
-                  <TextField styleClass="form-control" />
+                  <Label text="Buscar">
+                     <font>
+                        <Font size="15.0" />
+                     </font></Label>
+                  <TextField fx:id="searchInput" onKeyPressed="#searchInputChanged" styleClass="form-control" />
                </children>
                <HBox.margin>
                   <Insets left="10.0" />
@@ -39,7 +45,10 @@
       </HBox>
       <HBox prefHeight="204.0" prefWidth="600.0" VBox.vgrow="ALWAYS">
          <children>
-            <TableView id="companiesTable" fx:id="companiesTable" prefHeight="200.0" prefWidth="200.0" styleClass="table-view" HBox.hgrow="ALWAYS" />
+            <TableView id="companiesTable" fx:id="companiesTable" prefHeight="200.0" prefWidth="200.0" styleClass="table-view" HBox.hgrow="ALWAYS">
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy></TableView>
          </children>
          <padding>
             <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
