@@ -8,7 +8,7 @@ import lombok.*;
 @EqualsAndHashCode
 public class StudentCompany {
     private int id;
-    private Persona student;
-    private Persona tutor;
+    private Person student;
+    private Person tutor;
     private Company company;
 }

@@ -29,6 +29,6 @@ public class Company {
     private Workday workday;
     private Modality modality;
     private String email;
-    private Persona workManager;
-    private Persona workTutor;
+    private Person workManager;
+    private Person workTutor;
 }
