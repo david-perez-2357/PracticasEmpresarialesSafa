@@ -344,32 +344,31 @@
 /*------------------------Table view---*/
 .table-view {
     -fx-background-color: #fff;
-    -fx-padding: 10px;
-    -fx-border-width: 1px;
-    -fx-border-color: #dee2e6;
-    -fx-border-radius: 4px;
+    /*-fx-padding: 10px;*/
+    /*-fx-border-width: 1px;*/
+    /*-fx-border-radius: 4px;*/
 }
 
 .table-view .column-header {
     -fx-background-color: #f8f9fa;
-    -fx-border-width: 1px;
+    /*-fx-border-width: 1px;*/
     -fx-border-color: #dee2e6;
     -fx-font-weight: bold;
-    -fx-padding: 8px;
+    /*-fx-padding: 8px;*/
 }
 
 .table-view .cell {
-    -fx-padding: 8px;
-    -fx-border-width: 1px;
-    -fx-border-color: #dee2e6;
+    /*-fx-padding: 8px;*/
+    /*-fx-border-width: 1px;*/
+    /*-fx-border-color: #dee2e6;*/
 }
 
 .table-view .cell:odd {
-    -fx-background-color: #f8f9fa;
+    /*-fx-background-color: #f8f9fa;*/
 }
 
 .table-view .row-cell:hover {
-    -fx-background-color: #e9ecef;
+    /*-fx-background-color: #e9ecef;*/
 }
 
 /*------------------------Combo box---*/
@@ -377,17 +376,17 @@
     -fx-background-color: #fff;
     -fx-border-color: #ced4da;
     -fx-border-radius: 4px;
-    -fx-padding: 8px;
+    /*-fx-padding: 8px;*/
 }
 
 .combo-box .arrow-button {
-    -fx-background-color: #e9ecef;
-    -fx-border-color: #ced4da;
-    -fx-border-radius: 0 4px 4px 0;
+    /*-fx-background-color: #e9ecef;*/
+    /*-fx-border-color: #ced4da;*/
+    /*-fx-border-radius: 0 4px 4px 0;*/
 }
 
 .combo-box .arrow-button .arrow {
-    -fx-background-color: transparent;
+    /*-fx-background-color: transparent;*/
     -fx-fill: #495057;
 }
 
@@ -405,6 +404,14 @@
 
 .combo-box .arrow-button .arrow:hover {
     -fx-fill: #212529;
+}
+
+ /*------------------------Inputs---*/
+.form-control {
+    -fx-background-color: #fff;
+    -fx-border-color: #ced4da;
+    -fx-border-radius: 4px;
+    -fx-padding: 8px;
 }
 
 /*------------------------Badges---*/
