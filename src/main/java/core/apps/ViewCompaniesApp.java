@@ -9,9 +9,10 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.sql.SQLException;
 
-
 public class ViewCompaniesApp extends Application {
     private Scene scene;
+    private ViewCompaniesController controller;
+
     @Override
     public void start(Stage stage) throws IOException, SQLException {
         FXMLLoader fxmlLoader = new FXMLLoader(ViewCompaniesApp.class.getResource("/pages/viewCompanies.fxml"));
@@ -23,8 +24,8 @@ public class ViewCompaniesApp extends Application {
         // Add the stylesheet to the scene
         scene.getStylesheets().add(String.valueOf(ViewCompaniesApp.class.getResource("/css/bootstrap.css")));
 
-        // Initialize the table with the companies
-        ViewCompaniesController controller = fxmlLoader.getController();
+        // Get the controller and initialize the table
+        controller = fxmlLoader.getController();
     }
 
     public static void main(String[] args) {
