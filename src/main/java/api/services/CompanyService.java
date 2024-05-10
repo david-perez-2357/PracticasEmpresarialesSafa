@@ -63,4 +63,8 @@ public class CompanyService {
 
         return convertToCompaniesObjects(companies);
     }
+
+    public static Boolean deleteCompany(int companyCode) throws SQLException {
+        return db.executeUpdate("DELETE FROM empresa WHERE codigo_empresa = " + companyCode) == 1;
+    }
 }
