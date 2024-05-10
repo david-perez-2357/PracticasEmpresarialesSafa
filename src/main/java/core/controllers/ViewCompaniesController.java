@@ -10,7 +10,7 @@ import javafx.scene.control.TextField;
 import java.sql.SQLException;
 import java.util.List;
 
-import static api.controllers.CompanyController.getCompanies;
+import static api.services.CompanyService.getAllCompanies;
 
 public class ViewCompaniesController {
     @FXML
@@ -30,7 +30,7 @@ public class ViewCompaniesController {
     }
 
     public void addCompaniesToTable() throws SQLException {
-        List<Company> companies = getCompanies();
+        List<Company> companies = getAllCompanies();
 
         tableViewManager.addColumn("Código", Company::getCompanyCode);
         tableViewManager.addColumn("CIF", Company::getCif);

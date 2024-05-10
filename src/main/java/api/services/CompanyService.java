@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static api.Api_constants.db;
+import static api.services.CompanyService.convertToCompaniesObjects;
 
 /**
  * CompanyService
@@ -52,12 +53,14 @@ public class CompanyService {
      * @return ResultSet
      * @throws SQLException Exception
      */
-    public static ResultSet getAllCompanies() throws SQLException {
-        return db.executeQuery("""
+    public static List<Company> getAllCompanies() throws SQLException {
+        ResultSet companies = db.executeQuery("""
                     SELECT e.*, j.id AS jornada_id, j.nombre AS jornada_nombre, m.id AS modalidad_id, m.nombre AS modalidad_nombre
                     FROM empresa e
                     JOIN jornada j ON e.jornada_id = j.id
                     JOIN modalidad m ON e.modalidad_id = m.id
                 """);
+
+        return convertToCompaniesObjects(companies);
     }
 }
