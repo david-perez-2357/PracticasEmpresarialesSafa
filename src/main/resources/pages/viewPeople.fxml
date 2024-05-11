@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="438.0" prefWidth="600.0" styleClass="bg-white" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <HBox alignment="CENTER" prefHeight="76.0" prefWidth="600.0" styleClass="bg-success">
+         <children>
+            <Label fx:id="title" contentDisplay="CENTER" prefHeight="53.0" prefWidth="165.0" styleClass="text-light" text="Personas" textAlignment="CENTER">
+               <font>
+                  <Font name="Yu Gothic UI Bold" size="36.0" />
+               </font>
+            </Label>
+         </children>
+         <VBox.margin>
+            <Insets bottom="20.0" />
+         </VBox.margin>
+      </HBox>
+      <HBox maxHeight="19.0" prefHeight="19.0" prefWidth="560.0" spacing="10.0" VBox.vgrow="ALWAYS">
+         <children>
+            <HBox alignment="CENTER_LEFT" prefHeight="41.0" prefWidth="321.0" spacing="10.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <Label text="Buscar">
+                     <font>
+                        <Font size="15.0" />
+                     </font></Label>
+                  <TextField fx:id="searchInput" onKeyTyped="#filterChanged" styleClass="form-control" />
+               </children>
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin>
+            </HBox>
+            <ComboBox fx:id="rolesSelector" onAction="#filterChanged" prefWidth="150.0" promptText="Rol" styleClass="combo-box" />
+         </children>
+         <VBox.margin>
+            <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+         </VBox.margin>
+      </HBox>
+      <HBox prefHeight="204.0" prefWidth="600.0" VBox.vgrow="ALWAYS">
+         <children>
+            <TableView id="companiesTable" fx:id="peopleTable" prefHeight="200.0" prefWidth="200.0" styleClass="table-view" HBox.hgrow="ALWAYS">
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy></TableView>
+         </children>
+         <padding>
+            <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+         </padding>
+      </HBox>
+      <HBox maxHeight="140.0" prefHeight="140.0" prefWidth="600.0" spacing="20.0" VBox.vgrow="ALWAYS">
+         <children>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0" HBox.hgrow="ALWAYS">
+               <styleClass>
+                  <String fx:value="alert-container" />
+                  <String fx:value="alert-outline-primary" />
+               </styleClass>
+               <children>
+                  <Label styleClass="text-primary" text="Acciones">
+                     <font>
+                        <Font size="19.0" />
+                     </font>
+                  </Label>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+                     <children>
+                        <Button fx:id="edit" mnemonicParsing="false" text="Editar" textAlignment="CENTER" HBox.hgrow="ALWAYS">
+                           <styleClass>
+                              <String fx:value="btn" />
+                              <String fx:value="btn-outline-primary" />
+                           </styleClass>
+                        </Button>
+                        <Button fx:id="delete" mnemonicParsing="false" onAction="#deletePersonButton" text="Eliminar" textAlignment="CENTER">
+                           <styleClass>
+                              <String fx:value="btn" />
+                              <String fx:value="btn-outline-primary" />
+                           </styleClass>
+                        </Button>
+                     </children>
+                  </HBox>
+               </children>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+            </VBox>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <Label styleClass="text-info" text="Ver">
+                     <font>
+                        <Font size="19.0" />
+                     </font>
+                  </Label>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+                     <children>
+                        <Button fx:id="tutor" mnemonicParsing="false" text="Personas" textAlignment="CENTER">
+                           <styleClass>
+                              <String fx:value="btn" />
+                              <String fx:value="btn-outline-info" />
+                           </styleClass>
+                        </Button>
+                        <Button fx:id="student" mnemonicParsing="false" text="Alumnos" textAlignment="CENTER" HBox.hgrow="ALWAYS">
+                           <styleClass>
+                              <String fx:value="btn" />
+                              <String fx:value="btn-outline-info" />
+                           </styleClass>
+                        </Button>
+                        <Button fx:id="employee" mnemonicParsing="false" text="Empleados" textAlignment="CENTER">
+                           <styleClass>
+                              <String fx:value="btn" />
+                              <String fx:value="btn-outline-info" />
+                           </styleClass>
+                        </Button>
+                     </children>
+                  </HBox>
+               </children>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+               <styleClass>
+                  <String fx:value="alert-container" />
+                  <String fx:value="alert-outline-info" />
+               </styleClass>
+            </VBox>
+         </children>
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
+         <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </padding></HBox>
+   </children>
+</VBox>
