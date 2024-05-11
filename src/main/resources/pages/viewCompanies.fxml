@@ -100,13 +100,13 @@
                   </Label>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
                      <children>
-                        <Button fx:id="student" mnemonicParsing="false" text="Alumnos" textAlignment="CENTER" HBox.hgrow="ALWAYS">
+                        <Button fx:id="tutor" mnemonicParsing="false" text="Personas" textAlignment="CENTER">
                            <styleClass>
                               <String fx:value="btn" />
                               <String fx:value="btn-outline-info" />
                            </styleClass>
                         </Button>
-                        <Button fx:id="tutor" mnemonicParsing="false" text="Tutores" textAlignment="CENTER">
+                        <Button fx:id="student" mnemonicParsing="false" text="Alumnos" textAlignment="CENTER" HBox.hgrow="ALWAYS">
                            <styleClass>
                               <String fx:value="btn" />
                               <String fx:value="btn-outline-info" />
