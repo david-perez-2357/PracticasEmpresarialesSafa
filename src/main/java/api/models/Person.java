@@ -2,6 +2,8 @@ package api.models;
 
 import lombok.*;
 
+import java.util.Collection;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -22,4 +24,8 @@ public class Person {
     private int telephone;
     private String email;
     private Role role;
+
+    public String getFullName() {
+        return name + " " + surnames;
+    }
 }

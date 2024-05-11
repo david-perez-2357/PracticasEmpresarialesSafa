@@ -7,16 +7,6 @@ import lombok.*;
 @NoArgsConstructor
 @Getter
 @Setter
-@ToString(exclude = {
-            "companyCode",
-            "cif",
-            "direction",
-            "postalCode",
-            "location",
-            "workday",
-            "modality",
-            "email"
-        })
 @EqualsAndHashCode
 public class Company {
     private int companyCode;
@@ -28,4 +18,9 @@ public class Company {
     private Workday workday;
     private Modality modality;
     private String email;
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }
