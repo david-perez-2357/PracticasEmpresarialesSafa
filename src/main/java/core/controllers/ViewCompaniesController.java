@@ -8,6 +8,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseButton;
+import lombok.Setter;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -41,6 +42,12 @@ public class ViewCompaniesController {
 
     private TableViewManager<Company> tableViewManager;
 
+    private List<Company> data;
+
+    public ViewCompaniesController(List<Company> data) {
+        this.data = data;
+    }
+
     @FXML
     public void initialize() throws SQLException {
         tableViewManager = new TableViewManager<>(companiesTable);
@@ -60,7 +67,7 @@ public class ViewCompaniesController {
     }
 
     public void addCompaniesToTable() throws SQLException {
-        List<Company> companies = getAllCompanies();
+        List<Company> companies = data;
 
         tableViewManager.addColumn("Código", Company::getCompanyCode);
         tableViewManager.addColumn("CIF", Company::getCif);
