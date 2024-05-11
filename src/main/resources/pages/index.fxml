@@ -10,7 +10,6 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
 <AnchorPane maxWidth="1000.0" minWidth="1000.0" prefHeight="457.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="core.controllers.IndexController">
    <children>
       <VBox layoutX="36.0" layoutY="45.0" prefHeight="131.0" prefWidth="201.0" AnchorPane.bottomAnchor="55.0" AnchorPane.leftAnchor="36.0">
@@ -69,7 +68,7 @@
                   </Label>
                   <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0" VBox.vgrow="ALWAYS">
                      <children>
-                        <Button mnemonicParsing="false" text="Ver todas">
+                        <Button mnemonicParsing="false" onAction="#seeAllCompanies" text="Ver todas">
                            <styleClass>
                               <String fx:value="btn" />
                               <String fx:value="btn-success" />
