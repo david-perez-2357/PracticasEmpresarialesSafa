@@ -9,6 +9,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ViewCompaniesApp extends Application {
@@ -19,6 +20,10 @@ public class ViewCompaniesApp extends Application {
 
     public ViewCompaniesApp(List<Company> data) {
         this.data = data;
+    }
+
+    public ViewCompaniesApp() {
+        this.data = new ArrayList<>();
     }
 
     @Override
