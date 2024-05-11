@@ -1,8 +1,6 @@
 package api.services;
 
-import api.database.Database;
 import api.models.Company;
-import api.models.Person;
 import api.models.Workday;
 import api.models.Modality;
 
@@ -11,8 +9,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static api.Api_constants.db;
-import static api.services.CompanyService.convertToCompaniesObjects;
+import static api.ApiConstants.db;
 
 /**
  * CompanyService

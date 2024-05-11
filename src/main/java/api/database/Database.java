@@ -6,7 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import static api.Api_constants.envReader;
+import static api.ApiConstants.envReader;
 
 /**
  * Database class

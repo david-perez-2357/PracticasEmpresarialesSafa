@@ -1,6 +1,5 @@
 package api.services;
 
-import api.database.Database;
 import api.models.Person;
 import api.models.Role;
 
@@ -9,7 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static api.Api_constants.db;
+import static api.ApiConstants.db;
 
 /**
  * PersonService
@@ -70,12 +69,14 @@ public class PersonService {
      * @return ResultSet
      * @throws SQLException Exception
      */
-    public static ResultSet getAllPeople() throws SQLException {
-        return db.executeQuery("""
+    public static List<Person> getAllPeople() throws SQLException {
+        ResultSet people = db.executeQuery("""
                     SELECT p.*, r.id as role_id, r.nombre as role_name
                     FROM persona p
                     JOIN rol r ON p.rol_id = r.id
                 """);
+
+        return convertToPeopleObjects(people);
     }
 
     /**
@@ -83,7 +84,9 @@ public class PersonService {
      * @return ResultSet
      * @throws SQLException Exception
      */
-    public static ResultSet getAllRoles() throws SQLException {
-        return db.executeQuery("SELECT * FROM rol");
+    public static List<Role> getAllRoles() throws SQLException {
+        ResultSet roles = db.executeQuery("SELECT * FROM rol");
+
+        return convertToRolesObjects(roles);
     }
 }
