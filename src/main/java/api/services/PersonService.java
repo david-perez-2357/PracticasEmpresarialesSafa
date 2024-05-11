@@ -57,7 +57,7 @@ public class PersonService {
         while (resultSet.next()) {
             result.add(new Role(
                 resultSet.getInt("id"),
-                resultSet.getString("name")
+                resultSet.getString("nombre")
             ));
         }
 
