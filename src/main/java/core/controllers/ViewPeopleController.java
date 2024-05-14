@@ -150,6 +150,63 @@ public class ViewPeopleController {
     }
 
     @FXML
+    public void exportToXml() {
+        FilteredList<Person> filteredData = tableViewManager.getFilteredData();
+        List<Person> data = new ArrayList<>(filteredData);
+        String fileName = "personas";
+
+        if (data.isEmpty()) {
+            AlertMessage.showError("No hay datos para exportar");
+            return;
+        }
+
+        if (rolesSelector.getValue() != null && !((Role) rolesSelector.getValue()).getName().equals("Todos")) {
+            fileName += "-" + ((Role) rolesSelector.getValue()).getName().toLowerCase();
+        }
+
+        if (!searchInput.getText().isEmpty()) {
+            fileName += "-" + searchInput.getText().toLowerCase();
+        }
+
+        String filePath = System.getProperty("user.home") + File.separator + "Downloads" + File.separator + fileName + ".xml";
+
+        try {
+            XmlFileManager.exportPeople(data, filePath);
+            System.out.println(data.size() + " personas exportadas correctamente en " + filePath);
+            AlertMessage.showInfo(data.size() + " personas exportadas correctamente en " + filePath);
+        } catch (JAXBException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @FXML
+    public void importFromXml() {
+        FileChooser fileChooser = new FileChooser();
+        Window stage = peopleTable.getScene().getWindow();
+
+        fileChooser.setTitle("Importar Personas");
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Archivo XML", "*.xml"));
+        File file = fileChooser.showOpenDialog(stage);
+
+        if (file != null) {
+            try {
+                List<Person> personasImportadas = XmlFileManager.importPeople(file.getPath());
+                System.out.println(personasImportadas.size() + " personas importadas correctamente");
+                AlertMessage.showInfo(personasImportadas.size() + " personas importadas correctamente");
+
+                for (Person persona : personasImportadas) {
+                    System.out.println(persona);
+                }
+
+                addPeople(personasImportadas);
+                tableViewManager.addAllData(personasImportadas);
+            } catch (SQLException | JAXBException e) {
+                throw new RuntimeException(e);
+            }
+        }
+    }
+
+    @FXML
     public void deletePersonButton() {
         System.out.println("Delete button clicked");
     }

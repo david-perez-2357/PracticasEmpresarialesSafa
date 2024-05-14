@@ -14,4 +14,6 @@ module main.practicasempresarialessafa {
     opens core.apps to javafx.fxml;
     exports core.controllers;
     opens core.controllers to javafx.fxml;
+    opens core.utils to java.xml.bind;
+    opens api.models to org.glassfish.jaxb.runtime;
 }

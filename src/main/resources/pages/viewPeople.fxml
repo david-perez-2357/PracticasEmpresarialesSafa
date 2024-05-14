@@ -128,13 +128,13 @@
                         <Font size="19.0" />
                      </font>
                   </Label>
-                  <Button mnemonicParsing="false" text="Exportar">
+                  <Button mnemonicParsing="false" onAction="#exportToXml" text="Exportar">
                      <styleClass>
                         <String fx:value="btn" />
                         <String fx:value="btn-outline-warning" />
                      </styleClass>
                   </Button>
-                  <Button mnemonicParsing="false" text="Importar">
+                  <Button mnemonicParsing="false" onAction="#importFromXml" text="Importar">
                      <styleClass>
                         <String fx:value="btn" />
                         <String fx:value="btn-outline-warning" />
