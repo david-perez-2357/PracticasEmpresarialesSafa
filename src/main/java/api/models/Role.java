@@ -2,11 +2,17 @@ package api.models;
 
 import lombok.*;
 
+import java.io.Serial;
+import java.io.Serializable;
+
 @AllArgsConstructor
 @Getter
 @Setter
 @EqualsAndHashCode
-public class Role {
+public class Role implements Serializable {
+    @Serial
+    private static final long serialVersionUID = 1L;
+
     private int id;
     private String name;
 
