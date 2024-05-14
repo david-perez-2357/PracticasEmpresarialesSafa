@@ -120,7 +120,7 @@ public class ViewCompaniesController {
         }
 
         // Remove the company from the database
-         if (deleteCompany(selectedCompany.getCompanyCode())) {
+         if (deleteCompany(selectedCompany)) {
              // Remove the company from the table
              tableViewManager.removeData(selectedCompany);
 
