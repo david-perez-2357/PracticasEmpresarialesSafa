@@ -7,6 +7,7 @@ module main.practicasempresarialessafa {
     requires java.sql;
     requires static lombok;
     requires mysql.connector.j;
+    requires java.xml.bind;
 
     opens pages to javafx.fxml;
     exports core.apps;
