@@ -80,6 +80,38 @@ public class PersonService {
     }
 
     /**
+     * Add a list of people to the database
+     * @param people
+     * @throws SQLException
+     */
+    public static void addPeople(List<Person> people) throws SQLException {
+        db.beginTransaction();
+
+        try {
+            for (Person person : people) {
+                addPerson(person);
+            }
+
+            db.commitTransaction();
+        }catch (SQLException e) {
+            db.rollbackTransaction();
+            throw e;
+        }
+    }
+
+    /**
+     * Add a person to the database
+     * @param person
+     * @throws SQLException
+     */
+    public static void addPerson(Person person) throws SQLException {
+        db.executePreparedStatement("""
+            INSERT INTO persona (dni, nombre, apellidos, telefono, email, rol_id)
+            VALUES (?, ?, ?, ?, ?, ?)
+        """, person.getDni(), person.getName(), person.getSurnames(), person.getTelephone(), person.getEmail(), person.getRole().getId());
+    }
+
+    /**
      * Get all roles from the database
      * @return ResultSet
      * @throws SQLException Exception
