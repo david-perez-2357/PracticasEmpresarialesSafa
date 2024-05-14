@@ -188,7 +188,7 @@
 .btn-outline-warning {
     -fx-background-color: transparent;
     -fx-border-color: #ffc107;
-    -fx-text-fill: #ffc107;
+    -fx-text-fill: #e7ac00;
 }
 
 .btn-outline-info {
@@ -275,7 +275,7 @@
 }
 
 .text-warning {
-    -fx-text-fill: #ffc107;
+    -fx-text-fill: #e7ac00;
 }
 
 .text-info {
@@ -374,7 +374,7 @@
 .alert-outline-warning {
     -fx-background-color: transparent;
     -fx-text-fill: #fff3cd;
-    -fx-border-color: #ffeb85;
+    -fx-border-color: #ffe032;
 }
 
 .alert-outline-info {
