@@ -29,7 +29,7 @@ public class Person implements Serializable {
 
     public String toString() {
         return "Person{" +
-                ", dni='" + dni + '\'' +
+                "dni='" + dni + '\'' +
                 ", name='" + name + '\'' +
                 ", surnames='" + surnames + '\'' +
                 ", telephone=" + telephone +
