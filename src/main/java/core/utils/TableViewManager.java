@@ -7,6 +7,7 @@ import javafx.collections.transformation.FilteredList;
 import javafx.scene.Node;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import lombok.Getter;
 
 import java.util.List;
 import java.util.function.Function;
@@ -15,7 +16,9 @@ import java.util.function.Predicate;
 public class TableViewManager<T> {
 
     private final TableView<T> tableView;
+    @Getter
     private final ObservableList<T> data;
+    @Getter
     private final FilteredList<T> filteredData;
 
     public TableViewManager(Node tableView) {
