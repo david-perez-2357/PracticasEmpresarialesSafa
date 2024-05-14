@@ -112,6 +112,15 @@ public class PersonService {
     }
 
     /**
+     * Delete a person in the database
+     * @param person
+     * @throws SQLException
+     */
+    public static Boolean deletePerson(Person person) throws SQLException {
+        return db.executePreparedStatement("DELETE FROM persona WHERE id = ?", person.getId()) == 1;
+    }
+
+    /**
      * Get all roles from the database
      * @return ResultSet
      * @throws SQLException Exception

@@ -1,32 +1,28 @@
 package core.controllers;
 
-import api.models.Company;
 import api.models.Person;
 import api.models.Role;
 import core.utils.AlertMessage;
 import core.utils.DataFileManager;
 import core.utils.TableViewManager;
 import core.utils.XmlFileManager;
-import javafx.application.Application;
 import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.input.MouseButton;
 import javafx.stage.FileChooser;
 import javafx.stage.Window;
 
 import javax.xml.bind.JAXBException;
 import java.io.File;
 import java.io.IOException;
-import java.nio.Buffer;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Optional;
 
-import static api.services.CompanyService.getAllCompanies;
-import static api.services.PersonService.getAllPeople;
-import static api.services.PersonService.getAllRoles;
-import static api.services.PersonService.addPeople;
+import static api.services.PersonService.*;
+import static core.utils.AlertMessage.*;
 
 public class ViewPeopleController {
     @FXML
@@ -44,6 +40,9 @@ public class ViewPeopleController {
     @FXML
     private Button delete;
 
+    @FXML
+    private Button edit;
+
     private TableViewManager<Person> tableViewManager;
 
     private List<Person> data;
@@ -54,8 +53,21 @@ public class ViewPeopleController {
 
     @FXML
     public void initialize() throws SQLException {
+        tableViewManager = new TableViewManager<>(peopleTable);
+
+        // Initialize the fields
         addPeopleToTable();
         addDataToComboBox();
+
+        // Disable the buttons
+        disableButtons();
+
+        // Add a listener to the table to enable the buttons when a row is selected
+        peopleTable.setOnMouseClicked(event -> {
+            if (!peopleTable.getSelectionModel().isEmpty() && event.getButton() == MouseButton.PRIMARY && event.getClickCount() == 1) {
+                enableButtons();
+            }
+        });
     }
 
     private void addDataToComboBox() throws SQLException {
@@ -67,7 +79,6 @@ public class ViewPeopleController {
     private void addPeopleToTable() throws SQLException {
         List<Person> people = getAllPeople();
 
-        tableViewManager = new TableViewManager<>(peopleTable);
         tableViewManager.addColumn("DNI", Person::getDni);
         tableViewManager.addColumn("Nombre", Person::getFullName);
         tableViewManager.addColumn("Teléfono", Person::getTelephone);
@@ -76,6 +87,16 @@ public class ViewPeopleController {
 
         tableViewManager.addAllData(people);
         tableViewManager.refresh();
+    }
+
+    private void disableButtons() {
+        delete.setDisable(true);
+        edit.setDisable(true);
+    }
+
+    private void enableButtons() {
+        delete.setDisable(false);
+        edit.setDisable(false);
     }
 
     @FXML
@@ -207,7 +228,33 @@ public class ViewPeopleController {
     }
 
     @FXML
-    public void deletePersonButton() {
-        System.out.println("Delete button clicked");
+    public void deletePersonButton() throws SQLException {
+        // Get the selected person
+        Person selectedPerson = (Person) peopleTable.getSelectionModel().getSelectedItem();
+
+        // Show confirmation alert
+        Optional<ButtonType> response = showConfirmation("¿Estás seguro de que quieres eliminar la persona " + selectedPerson.getFullName() + "?");
+
+        // If the user confirms the action
+        if (response.isPresent() && response.get() != ButtonType.OK) {
+            return;
+        }
+
+        // Remove the person from the database
+        if (deletePerson(selectedPerson)) {
+            // Remove the company from the table
+            tableViewManager.removeData(selectedPerson);
+
+            // Show success message
+            showInfo("La persona " + selectedPerson.getFullName() + " ha sido eliminada correctamente");
+        }else {
+            // Show error message
+            showError("Ha ocurrido un error al eliminar la persona " + selectedPerson.getFullName());
+        }
+    }
+
+    @FXML
+    public void editPersonButton() {
+        System.out.println("Edit button clicked");
     }
 }
