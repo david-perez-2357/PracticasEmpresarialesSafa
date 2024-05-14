@@ -28,6 +28,10 @@ public class TableViewManager<T> {
         this.tableView.setItems(filteredData);
     }
 
+    public void reset() {
+        tableView.getColumns().clear();
+    }
+
     public void addColumn(String columnName, Function<T, Object> valueFunction) {
         TableColumn<T, Object> column = new TableColumn<>(columnName);
         column.setCellValueFactory(cellData -> {
