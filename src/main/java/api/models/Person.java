@@ -27,14 +27,8 @@ public class Person implements Serializable {
         return name + " " + surnames;
     }
 
+    @Override
     public String toString() {
-        return "Person{" +
-                "dni='" + dni + '\'' +
-                ", name='" + name + '\'' +
-                ", surnames='" + surnames + '\'' +
-                ", telephone=" + telephone +
-                ", email='" + email + '\'' +
-                ", role=" + role.getId() +
-            '}';
+        return getFullName();
     }
 }
