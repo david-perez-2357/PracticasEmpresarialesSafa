@@ -80,6 +80,23 @@ public class PersonService {
     }
 
     /**
+     * Get people by role from the database
+     * @param role
+     * @return
+     * @throws SQLException
+     */
+    public static List<Person> getPeopleByRole(Role role) throws SQLException {
+        ResultSet people = db.executePreparedQuery("""
+            SELECT p.*, r.id as role_id, r.nombre as role_name
+            FROM persona p
+            JOIN rol r ON p.rol_id = r.id
+            WHERE r.id = ?
+        """, role.getId());
+
+        return convertToPeopleObjects(people);
+    }
+
+    /**
      * Add a list of people to the database
      * @param people
      * @throws SQLException
@@ -105,7 +122,7 @@ public class PersonService {
      * @throws SQLException
      */
     public static void addPerson(Person person) throws SQLException {
-        db.executePreparedStatement("""
+        db.executePreparedUpdate("""
             INSERT INTO persona (dni, nombre, apellidos, telefono, email, rol_id)
             VALUES (?, ?, ?, ?, ?, ?)
         """, person.getDni(), person.getName(), person.getSurnames(), person.getTelephone(), person.getEmail(), person.getRole().getId());
@@ -117,7 +134,7 @@ public class PersonService {
      * @throws SQLException
      */
     public static Boolean deletePerson(Person person) throws SQLException {
-        return db.executePreparedStatement("DELETE FROM persona WHERE id = ?", person.getId()) == 1;
+        return db.executePreparedUpdate("DELETE FROM persona WHERE id = ?", person.getId()) == 1;
     }
 
     /**
