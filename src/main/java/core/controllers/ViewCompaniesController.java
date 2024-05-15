@@ -124,6 +124,9 @@ public class ViewCompaniesController {
              // Remove the company from the table
              tableViewManager.removeData(selectedCompany);
 
+            // Disable the buttons
+            disableButtons();
+
              // Show success message
              showInfo("La empresa " + selectedCompany.getName() + " ha sido eliminada correctamente");
          }else {
