@@ -8,13 +8,11 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseButton;
-import lombok.Setter;
 
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
-import static api.services.CompanyService.getAllCompanies;
 import static api.services.CompanyService.deleteCompany;
 import static core.utils.AlertMessage.*;
 
@@ -72,7 +70,7 @@ public class ViewCompaniesController {
         tableViewManager.addColumn("Código", Company::getCompanyCode);
         tableViewManager.addColumn("CIF", Company::getCif);
         tableViewManager.addColumn("Nombre", Company::getName);
-        tableViewManager.addColumn("Dirección", Company::getDirection);
+        tableViewManager.addColumn("Dirección", Company::getAddress);
         tableViewManager.addColumn("Código Postal", Company::getPostalCode);
         tableViewManager.addColumn("Localidad", Company::getLocation);
         tableViewManager.addColumn("Jornada", company -> company.getWorkday().getName());
