@@ -292,8 +292,8 @@
 
 /*------------------------Alerts---*/
 .alert-container {
-    -fx-padding: 10px;
-    -fx-margin-bottom: 10px;
+    /*-fx-padding: 10px;*/
+    /*-fx-margin-bottom: 10px;*/
     -fx-border-width: 1px;
     -fx-border-radius: 4px;
 }
@@ -449,11 +449,16 @@
 }
 
 .combo-box .list-cell {
-    -fx-padding: 8px;
+    /*-fx-padding: 8px;*/
 }
 
 .combo-box .list-cell:hover {
-    -fx-background-color: #e9ecef;
+    -fx-background-color: #1bcc00;
+}
+
+.combo-box-popup .list-view .list-cell:filled:selected,
+.combo-box-popup .list-view .list-cell:selected {
+    -fx-background-color: #17ad00;
 }
 
 .combo-box .arrow-button:hover {
