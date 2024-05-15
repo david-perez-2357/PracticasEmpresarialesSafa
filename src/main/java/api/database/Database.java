@@ -128,7 +128,7 @@ public class Database {
      * @return The number of rows affected by the query
      * @throws SQLException If there is an error executing the prepared statement
      */
-    public int executePreparedStatement(String query, Object... values) throws SQLException {
+    public int executePreparedUpdate(String query, Object... values) throws SQLException {
         try {
             PreparedStatement statement = connection.prepareStatement(query);
 
@@ -139,6 +139,30 @@ public class Database {
 
             // Execute the query
             return statement.executeUpdate();
+        } catch (SQLException e) {
+            throw new SQLException("Error executing prepared statement");
+        }
+    }
+
+
+    /**
+     * Execute a prepared statement
+     * @param query The SQL query to execute
+     * @param values The values to bind to the query
+     * @return The number of rows affected by the query
+     * @throws SQLException If there is an error executing the prepared statement
+     */
+    public ResultSet executePreparedQuery(String query, Object... values) throws SQLException {
+        try {
+            PreparedStatement statement = connection.prepareStatement(query);
+
+            // Bind the values to the query
+            for (int i = 0; i < values.length; i++) {
+                statement.setObject(i + 1, values[i]);
+            }
+
+            // Execute the query
+            return statement.executeQuery();
         } catch (SQLException e) {
             throw new SQLException("Error executing prepared statement");
         }
