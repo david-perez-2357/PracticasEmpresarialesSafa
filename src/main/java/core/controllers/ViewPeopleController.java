@@ -139,6 +139,7 @@ public class ViewPeopleController {
             System.out.println(data.size() + " personas exportadas correctamente en " + filePath);
             AlertMessage.showInfo(data.size() + " personas exportadas correctamente en " + filePath);
         } catch (IOException e) {
+            AlertMessage.showError("Ha ocurrido un error al exportar las personas");
             e.printStackTrace();
         }
     }
@@ -155,16 +156,12 @@ public class ViewPeopleController {
         if (file != null) {
             try {
                 List<Person> personasImportadas = DataFileManager.importPeople(file.getPath());
-                System.out.println(personasImportadas.size() + " personas importadas correctamente");
                 AlertMessage.showInfo(personasImportadas.size() + " personas importadas correctamente");
-
-                for (Person persona : personasImportadas) {
-                    System.out.println(persona);
-                }
 
                 addPeople(personasImportadas);
                 tableViewManager.addAllData(personasImportadas);
             } catch (IOException | ClassNotFoundException | SQLException e) {
+                AlertMessage.showError("Ha ocurrido un error al importar las personas");
                 throw new RuntimeException(e);
             }
         }
@@ -196,6 +193,7 @@ public class ViewPeopleController {
             System.out.println(data.size() + " personas exportadas correctamente en " + filePath);
             AlertMessage.showInfo(data.size() + " personas exportadas correctamente en " + filePath);
         } catch (JAXBException e) {
+            AlertMessage.showError("Ha ocurrido un error al exportar las personas");
             throw new RuntimeException(e);
         }
     }
@@ -215,13 +213,10 @@ public class ViewPeopleController {
                 System.out.println(personasImportadas.size() + " personas importadas correctamente");
                 AlertMessage.showInfo(personasImportadas.size() + " personas importadas correctamente");
 
-                for (Person persona : personasImportadas) {
-                    System.out.println(persona);
-                }
-
                 addPeople(personasImportadas);
                 tableViewManager.addAllData(personasImportadas);
             } catch (SQLException | JAXBException e) {
+                AlertMessage.showError("Ha ocurrido un error al importar las personas");
                 throw new RuntimeException(e);
             }
         }
@@ -244,6 +239,9 @@ public class ViewPeopleController {
         if (deletePerson(selectedPerson)) {
             // Remove the company from the table
             tableViewManager.removeData(selectedPerson);
+
+            // Disable the buttons
+            disableButtons();
 
             // Show success message
             showInfo("La persona " + selectedPerson.getFullName() + " ha sido eliminada correctamente");
