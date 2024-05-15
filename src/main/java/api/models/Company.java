@@ -12,7 +12,7 @@ public class Company {
     private int companyCode;
     private String cif;
     private String name;
-    private String direction;
+    private String address;
     private int postalCode;
     private String location;
     private Workday workday;
