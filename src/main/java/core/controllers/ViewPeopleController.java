@@ -77,7 +77,7 @@ public class ViewPeopleController {
     }
 
     private void addPeopleToTable() throws SQLException {
-        List<Person> people = getAllPeople();
+        List<Person> people = data;
 
         tableViewManager.addColumn("DNI", Person::getDni);
         tableViewManager.addColumn("Nombre", Person::getFullName);
