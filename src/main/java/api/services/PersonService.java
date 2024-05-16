@@ -134,16 +134,36 @@ public class PersonService {
     }
 
     /**
+     * Check if a person exists in the database
+     * @param person
+     * @return
+     * @throws SQLException
+     */
+    public static Boolean personExists(Person person) throws SQLException {
+        // Check if the person exists by DNI, name and surnames
+        ResultSet result = db.executePreparedQuery("""
+            SELECT * FROM persona WHERE dni = ? AND nombre = ? AND apellidos = ?
+        """, person.getDni(), person.getName(), person.getSurnames());
+
+        return result.next();
+    }
+
+    /**
      * Add a list of people to the database
      * @param people
      * @throws SQLException
      */
-    public static void addPeople(List<Person> people) throws SQLException {
+    public static Integer addPeople(List<Person> people) throws SQLException {
         db.beginTransaction();
+        Integer addedPeople = 0;
 
         try {
             for (Person person : people) {
-                addPerson(person);
+                if (!personExists(person)) {
+                    System.out.println("Adding person: " + person.getFullName());
+                    addPerson(person);
+                    addedPeople++;
+                }
             }
 
             db.commitTransaction();
@@ -151,6 +171,8 @@ public class PersonService {
             db.rollbackTransaction();
             throw e;
         }
+
+        return addedPeople;
     }
 
     /**

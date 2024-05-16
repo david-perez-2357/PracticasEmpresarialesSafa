@@ -156,9 +156,10 @@ public class ViewPeopleController {
         if (file != null) {
             try {
                 List<Person> personasImportadas = DataFileManager.importPeople(file.getPath());
-                AlertMessage.showInfo(personasImportadas.size() + " personas importadas correctamente");
+                Integer numPersonasImportadas = addPeople(personasImportadas);
+                System.out.println(numPersonasImportadas + " personas importadas correctamente");
+                AlertMessage.showInfo(numPersonasImportadas + " personas importadas correctamente");
 
-                addPeople(personasImportadas);
                 tableViewManager.addAllData(personasImportadas);
             } catch (IOException | ClassNotFoundException | SQLException e) {
                 AlertMessage.showError("Ha ocurrido un error al importar las personas");
@@ -210,10 +211,10 @@ public class ViewPeopleController {
         if (file != null) {
             try {
                 List<Person> personasImportadas = XmlFileManager.importPeople(file.getPath());
-                System.out.println(personasImportadas.size() + " personas importadas correctamente");
-                AlertMessage.showInfo(personasImportadas.size() + " personas importadas correctamente");
+                Integer numPersonasImportadas = addPeople(personasImportadas);
+                System.out.println(numPersonasImportadas + " personas importadas correctamente");
+                AlertMessage.showInfo(numPersonasImportadas + " personas importadas correctamente");
 
-                addPeople(personasImportadas);
                 tableViewManager.addAllData(personasImportadas);
             } catch (SQLException | JAXBException e) {
                 AlertMessage.showError("Ha ocurrido un error al importar las personas");
