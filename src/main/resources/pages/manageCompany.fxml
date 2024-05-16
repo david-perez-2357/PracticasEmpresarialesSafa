@@ -167,7 +167,7 @@
       </VBox>
       <HBox alignment="CENTER" prefHeight="91.0">
          <children>
-            <Button fx:id="submit" mnemonicParsing="false" text="Añadir empresa">
+            <Button fx:id="submit" mnemonicParsing="false" onAction="#submitForm" text="Añadir empresa">
                <font>
                   <Font size="15.0" />
                </font>

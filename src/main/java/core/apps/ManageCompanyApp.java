@@ -1,5 +1,7 @@
 package core.apps;
 
+import api.models.Company;
+import api.models.Person;
 import core.controllers.ManageCompanyController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -10,12 +12,36 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 public class ManageCompanyApp extends Application {
+    private Company company;
+    private Person workManager;
+    private Person workTutor;
+
+    public ManageCompanyApp() {
+        this.company = null;
+        this.workManager = null;
+        this.workTutor = null;
+    }
+
+    public ManageCompanyApp(Company company, Person workManager, Person workTutor) {
+        this.company = company;
+        this.workManager = workManager;
+        this.workTutor = workTutor;
+    }
+
     @Override
     public void start(Stage stage) throws IOException, SQLException {
         FXMLLoader fxmlLoader = new FXMLLoader(ManageCompanyApp.class.getResource("/pages/manageCompany.fxml"));
 
-        // Get the controller and initialize the table
+        // Get the controller and initialize the file
         ManageCompanyController controller = new ManageCompanyController();
+        controller.setCompany(company);
+        controller.setCompanyWorkManager(workManager);
+        controller.setCompanyWorkTutor(workTutor);
+
+        if (company != null) {
+            controller.setIsEdit(true);
+        }
+
         fxmlLoader.setController(controller);
 
         // Set the scene

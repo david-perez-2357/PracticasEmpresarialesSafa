@@ -1,6 +1,7 @@
 package api.services;
 
 import api.models.Company;
+import api.models.Person;
 import api.models.Workday;
 import api.models.Modality;
 
@@ -61,6 +62,65 @@ public class CompanyService {
         return convertToCompaniesObjects(companies);
     }
 
+    /**
+     * Add a company
+     * @param company
+     * @param workManager
+     * @param tutorManager
+     * @return
+     * @throws SQLException
+     */
+    public static Boolean addCompany(Company company, Person workManager, Person tutorManager) throws SQLException {
+        return db.executePreparedUpdate("""
+                INSERT INTO empresa (cif, nombre, direccion, codigo_postal, localidad, jornada_id, modalidad_id, email, id_responsable, id_tutor_laboral)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            """,company.getCif(),
+                company.getName(),
+                company.getAddress(),
+                company.getPostalCode(),
+                company.getLocation(),
+                company.getWorkday().getId(),
+                company.getModality().getId(),
+                company.getEmail(),
+                workManager.getId(),
+                tutorManager.getId()
+        ) == 1;
+    }
+
+    /**
+     * update a company
+     * @param company
+     * @param workManager
+     * @param tutorManager
+     * @return
+     * @throws SQLException
+     */
+    public static Boolean updateCompany(Company company, Person workManager, Person tutorManager) throws SQLException {
+        return db.executePreparedUpdate("""
+                            UPDATE empresa
+                            SET cif = ?, nombre = ?, direccion = ?, codigo_postal = ?, localidad = ?, jornada_id = ?, modalidad_id = ?, email = ?, id_responsable = ?, id_tutor_laboral = ?
+                            WHERE codigo_empresa = ?
+                        """, company.getCif(),
+                company.getName(),
+                company.getAddress(),
+                company.getPostalCode(),
+                company.getLocation(),
+                company.getWorkday().getId(),
+                company.getModality().getId(),
+                company.getEmail(),
+                workManager.getId(),
+                tutorManager.getId(),
+                company.getCompanyCode()
+        ) == 1;
+    }
+
+
+    /**
+     * delete a company
+     * @param company
+     * @return
+     * @throws SQLException
+     */
     public static Boolean deleteCompany(Company company) throws SQLException {
         return db.executeUpdate("DELETE FROM empresa WHERE codigo_empresa = " + company.getCompanyCode()) == 1;
     }
