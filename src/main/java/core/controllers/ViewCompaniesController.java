@@ -1,6 +1,8 @@
 package core.controllers;
 
 import api.models.Company;
+import api.models.Person;
+import core.apps.ManageCompanyApp;
 import core.utils.TableViewManager;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -9,11 +11,14 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseButton;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
 import static api.services.CompanyService.deleteCompany;
+import static api.services.PersonService.getWorkManager;
+import static api.services.PersonService.getWorkTutor;
 import static core.utils.AlertMessage.*;
 
 public class ViewCompaniesController {
@@ -102,6 +107,21 @@ public class ViewCompaniesController {
         // Filter the table by the search input
         String searchText = searchInput.getText();
         tableViewManager.filter(company -> company.getName().toLowerCase().contains(searchText.toLowerCase()));
+    }
+
+    @FXML
+    public void editCompanyButton() throws SQLException, IOException {
+        // Get the selected company
+        Company selectedCompany = (Company) companiesTable.getSelectionModel().getSelectedItem();
+        Person workManager = getWorkManager(selectedCompany);
+        Person workTutor = getWorkTutor(selectedCompany);
+
+        // Open the manage company view
+        ManageCompanyApp manageCompanyController = new ManageCompanyApp(selectedCompany, workManager, workTutor);
+        manageCompanyController.start(new javafx.stage.Stage());
+
+        // Close the current view
+        companiesTable.getScene().getWindow().hide();
     }
 
     @FXML

@@ -2,6 +2,7 @@ package core.apps;
 
 import api.models.Company;
 import api.models.Person;
+import core.controllers.IndexController;
 import core.controllers.ManageCompanyController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -55,11 +56,22 @@ public class ManageCompanyApp extends Application {
 
         // Close event
         stage.setOnCloseRequest(e -> {
-            IndexApp indexApp = new IndexApp();
-            try {
-                indexApp.start(new Stage());
-            } catch (IOException | SQLException ioException) {
-                ioException.printStackTrace();
+            if (company != null) {
+                // If the company is not null, we are editing a company
+                IndexController indexController = new IndexController();
+                try {
+                    indexController.seeAllCompanies();
+                } catch (SQLException sqlException) {
+                    sqlException.printStackTrace();
+                }
+            }else {
+                // If the company is null, we are creating a new company
+                IndexApp indexApp = new IndexApp();
+                try {
+                    indexApp.start(new Stage());
+                } catch (IOException | SQLException ioException) {
+                    ioException.printStackTrace();
+                }
             }
         });
     }

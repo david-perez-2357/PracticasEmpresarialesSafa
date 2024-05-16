@@ -36,8 +36,10 @@ public class IndexController {
         ViewCompaniesApp viewCompaniesApp = new ViewCompaniesApp(getAllCompanies());
         try {
             viewCompaniesApp.start(new Stage());
-            Stage stage = (Stage) personImage.getScene().getWindow();
-            stage.close();
+            if (personImage != null) {
+                Stage stage = (Stage) personImage.getScene().getWindow();
+                stage.close();
+            }
         } catch (IOException | SQLException ioException) {
             ioException.printStackTrace();
         }

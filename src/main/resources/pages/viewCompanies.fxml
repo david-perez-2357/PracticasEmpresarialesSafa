@@ -69,7 +69,7 @@
                   </Label>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
                      <children>
-                        <Button fx:id="edit" mnemonicParsing="false" text="Editar" textAlignment="CENTER" HBox.hgrow="ALWAYS">
+                        <Button fx:id="edit" onAction="#editCompanyButton" mnemonicParsing="false" text="Editar" textAlignment="CENTER" HBox.hgrow="ALWAYS">
                            <styleClass>
                               <String fx:value="btn" />
                               <String fx:value="btn-outline-primary" />

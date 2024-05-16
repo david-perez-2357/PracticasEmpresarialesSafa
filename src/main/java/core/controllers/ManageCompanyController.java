@@ -1,14 +1,17 @@
 package core.controllers;
 
 import api.models.*;
+import core.apps.IndexApp;
 import core.utils.AlertMessage;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import lombok.Setter;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -143,8 +146,6 @@ public class ManageCompanyController {
         companyWorkTutor = workTutor;
 
         if (isEdit && updateCompany(company, workManager, workTutor)) {
-            // Update the company
-            // updateCompany(company, workManager, workTutor);
             AlertMessage.showInfo("La empresa se ha actualizado correctamente");
         } else if (!isEdit && addCompany(company, workManager, workTutor)) {
             AlertMessage.showInfo("La empresa se ha añadido correctamente");
@@ -152,8 +153,22 @@ public class ManageCompanyController {
             AlertMessage.showError("Ha ocurrido un error");
         }
 
+        // Initialize the index app
+        if (isEdit) {
+            IndexController indexController = new IndexController();
+            indexController.seeAllCompanies();
+        }else {
+            try {
+                IndexApp indexApp = new IndexApp();
+                indexApp.start(new Stage());
+            } catch (IOException | SQLException ioException) {
+                ioException.printStackTrace();
+            }
+        }
+
         // Close the window
-        submit.getScene().getWindow().hide();
+        Stage stage = (Stage) submit.getScene().getWindow();
+        stage.close();
     }
 
     public Boolean validateForm() {

@@ -1,5 +1,6 @@
 package api.services;
 
+import api.models.Company;
 import api.models.Person;
 import api.models.Role;
 
@@ -77,6 +78,42 @@ public class PersonService {
                 """);
 
         return convertToPeopleObjects(people);
+    }
+
+    /**
+     * Get the work manager from the database
+     * @param company
+     * @return
+     * @throws SQLException
+     */
+    public static Person getWorkManager(Company company) throws SQLException {
+        ResultSet workManager = db.executePreparedQuery("""
+            SELECT p.*, r.id as role_id, r.nombre as role_name
+            FROM persona p
+            JOIN rol r ON p.rol_id = r.id
+            JOIN empresa e ON p.id = e.id_responsable
+            WHERE e.codigo_empresa = ?
+        """, company.getCompanyCode());
+
+        return convertToPeopleObjects(workManager).get(0);
+    }
+
+    /**
+     * Get the work tutor from the database
+     * @param company
+     * @return
+     * @throws SQLException
+     */
+    public static Person getWorkTutor(Company company) throws SQLException {
+        ResultSet workTutor = db.executePreparedQuery("""
+            SELECT p.*, r.id as role_id, r.nombre as role_name
+            FROM persona p
+            JOIN rol r ON p.rol_id = r.id
+            JOIN empresa e ON p.id = e.id_tutor_laboral
+            WHERE e.codigo_empresa = ?
+        """, company.getCompanyCode());
+
+        return convertToPeopleObjects(workTutor).get(0);
     }
 
     /**
