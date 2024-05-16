@@ -160,7 +160,6 @@ public class PersonService {
         try {
             for (Person person : people) {
                 if (!personExists(person)) {
-                    System.out.println("Adding person: " + person.getFullName());
                     addPerson(person);
                     addedPeople++;
                 }
