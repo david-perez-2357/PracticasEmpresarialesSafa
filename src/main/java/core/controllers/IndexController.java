@@ -1,5 +1,6 @@
 package core.controllers;
 
+import core.apps.ManageAssignationApp;
 import core.apps.ManageCompanyApp;
 import core.apps.ViewCompaniesApp;
 import core.apps.ViewPeopleApp;
@@ -51,6 +52,19 @@ public class IndexController {
 
         try {
             viewPeopleApp.start(new Stage());
+            Stage stage = (Stage) personImage.getScene().getWindow();
+            stage.close();
+        } catch (IOException | SQLException ioException) {
+            ioException.printStackTrace();
+        }
+    }
+
+    @FXML
+    public void assignNew() {
+        ManageAssignationApp manageAssignationApp = new ManageAssignationApp();
+
+        try {
+            manageAssignationApp.start(new Stage());
             Stage stage = (Stage) personImage.getScene().getWindow();
             stage.close();
         } catch (IOException | SQLException ioException) {

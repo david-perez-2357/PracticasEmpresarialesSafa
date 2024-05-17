@@ -105,7 +105,7 @@
                   </Label>
                   <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0" VBox.vgrow="ALWAYS">
                      <children>
-                        <Button mnemonicParsing="false" text="Añadir nueva">
+                        <Button mnemonicParsing="false" onAction="#assignNew" text="Añadir nueva">
                            <styleClass>
                               <String fx:value="btn" />
                               <String fx:value="btn-success" />

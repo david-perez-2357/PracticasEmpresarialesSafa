@@ -158,6 +158,17 @@ public class PersonService {
         return convertToPeopleObjects(people);
     }
 
+    public static List<Person> getNonAssignedStudents() throws SQLException {
+        ResultSet people = db.executePreparedQuery("""
+            SELECT p.*, r.id as role_id, r.nombre as role_name
+            FROM persona p
+            JOIN rol r ON p.rol_id = r.id and r.nombre = 'alumno'
+            WHERE p.id NOT IN (SELECT id_alumno FROM alumno_empresa)
+        """);
+
+        return convertToPeopleObjects(people);
+    }
+
     /**
      * Check if a person exists in the database
      * @param person
@@ -229,5 +240,40 @@ public class PersonService {
         ResultSet roles = db.executeQuery("SELECT * FROM rol");
 
         return convertToRolesObjects(roles);
+    }
+
+    /**
+     * Check if a student is assigned to a company
+     * @param student
+     * @return
+     * @throws SQLException
+     */
+    public static Boolean studentIsAssigned(Person student) throws SQLException {
+        ResultSet result = db.executePreparedQuery("""
+            SELECT * FROM alumno_empresa WHERE id_alumno = ?
+        """, student.getId());
+
+        return result.next();
+    }
+
+    /**
+     * Assign a student to a company
+     * @param student
+     * @param tutor
+     * @param company
+     * @return
+     * @throws SQLException
+     */
+    public static Boolean assignStudentToCompany(Person student, Person tutor, Company company) throws SQLException {
+        if (studentIsAssigned(student)) {
+            return false;
+        }
+
+        int rows = db.executePreparedUpdate("""
+            INSERT INTO alumno_empresa (id_alumno, id_tutor, id_empresa)
+            VALUES (?, ?, ?)
+        """, student.getId(), tutor.getId(), company.getCompanyCode());
+
+        return rows == 1;
     }
 }
