@@ -138,7 +138,8 @@ public class PersonService {
             SELECT p.*, r.id as role_id, r.nombre as role_name
             FROM persona p
             JOIN rol r ON p.rol_id = r.id
-            JOIN empresa e ON p.id = e.id_responsable OR p.id = e.id_tutor_laboral
+            LEFT JOIN alumno_empresa ae ON p.id = ae.id_alumno
+            LEFT JOIN empresa e ON e.codigo_empresa = ae.id_empresa OR p.id = e.id_responsable OR p.id = e.id_tutor_laboral
             WHERE e.codigo_empresa = ?
         """, company.getCompanyCode());
 
