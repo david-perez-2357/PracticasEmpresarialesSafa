@@ -25,6 +25,7 @@ import static api.services.PersonService.*;
 import static core.utils.AlertMessage.*;
 
 public class ViewPeopleController {
+
     @FXML
     private Label title;
 
@@ -47,8 +48,11 @@ public class ViewPeopleController {
 
     private List<Person> data;
 
-    public ViewPeopleController(List<Person> data) {
+    private String titleText = "Personas";
+
+    public ViewPeopleController(List<Person> data, String title) {
         this.data = data;
+        this.titleText = title;
     }
 
     @FXML
@@ -61,6 +65,9 @@ public class ViewPeopleController {
 
         // Disable the buttons
         disableButtons();
+
+        // Set the title
+        title.setText(titleText);
 
         // Add a listener to the table to enable the buttons when a row is selected
         peopleTable.setOnMouseClicked(event -> {

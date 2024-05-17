@@ -3,6 +3,7 @@ package core.controllers;
 import api.models.Company;
 import api.models.Person;
 import core.apps.ManageCompanyApp;
+import core.apps.ViewPeopleApp;
 import core.utils.TableViewManager;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -17,8 +18,7 @@ import java.util.List;
 import java.util.Optional;
 
 import static api.services.CompanyService.deleteCompany;
-import static api.services.PersonService.getWorkManager;
-import static api.services.PersonService.getWorkTutor;
+import static api.services.PersonService.*;
 import static core.utils.AlertMessage.*;
 
 public class ViewCompaniesController {
@@ -38,7 +38,7 @@ public class ViewCompaniesController {
     private Button student;
 
     @FXML
-    private Button tutor;
+    private Button people;
 
     @FXML
     private Button employee;
@@ -90,7 +90,7 @@ public class ViewCompaniesController {
         edit.setDisable(true);
         delete.setDisable(true);
         student.setDisable(true);
-        tutor.setDisable(true);
+        people.setDisable(true);
         employee.setDisable(true);
     }
 
@@ -98,7 +98,7 @@ public class ViewCompaniesController {
         edit.setDisable(false);
         delete.setDisable(false);
         student.setDisable(false);
-        tutor.setDisable(false);
+        people.setDisable(false);
         employee.setDisable(false);
     }
 
@@ -151,6 +151,53 @@ public class ViewCompaniesController {
              // Show error message
              showError("Ha ocurrido un error al eliminar la empresa " + selectedCompany.getName());
          }
+    }
 
+    @FXML
+    public void viewAllCompanyPeople() throws SQLException, IOException {
+        // Get the selected company
+        Company selectedCompany = (Company) companiesTable.getSelectionModel().getSelectedItem();
+
+        // Get the people from the company
+        List<Person> people = getPeopleByCompany(selectedCompany);
+
+        // Open the view people view
+        ViewPeopleApp viewPeopleApp = new ViewPeopleApp(people, "Personas de la empresa " + selectedCompany.getName());
+        viewPeopleApp.start(new javafx.stage.Stage());
+
+        // Close the current view
+        companiesTable.getScene().getWindow().hide();
+    }
+
+    @FXML
+    public void viewAllCompanyStudents() throws SQLException, IOException {
+        // Get the selected company
+        Company selectedCompany = (Company) companiesTable.getSelectionModel().getSelectedItem();
+
+        // Get the students from the company
+        List<Person> students = getStudentsByCompany(selectedCompany);
+
+        // Open the view people view
+        ViewPeopleApp viewPeopleApp = new ViewPeopleApp(students, "Alumnos de la empresa " + selectedCompany.getName());
+        viewPeopleApp.start(new javafx.stage.Stage());
+
+        // Close the current view
+        companiesTable.getScene().getWindow().hide();
+    }
+
+    @FXML
+    public void viewCompamyEmployees() throws SQLException, IOException {
+        // Get the selected company
+        Company selectedCompany = (Company) companiesTable.getSelectionModel().getSelectedItem();
+
+        // Get the employees from the company
+        List<Person> employees = List.of(getWorkManager(selectedCompany), getWorkTutor(selectedCompany));
+
+        // Open the view people view
+        ViewPeopleApp viewPeopleApp = new ViewPeopleApp(employees, "Empleados de la empresa " + selectedCompany.getName());
+        viewPeopleApp.start(new javafx.stage.Stage());
+
+        // Close the current view
+        companiesTable.getScene().getWindow().hide();
     }
 }

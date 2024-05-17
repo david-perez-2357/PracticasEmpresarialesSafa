@@ -35,7 +35,7 @@ public class ViewCompaniesApp extends Application {
         fxmlLoader.setController(controller);
 
         // Set the scene
-        scene = new Scene(fxmlLoader.load(), 800, 500);
+        scene = new Scene(fxmlLoader.load(), 800, 550);
         stage.setTitle("Empresas - Prácticas Empresariales SAFA");
         stage.setScene(scene);
         stage.show();

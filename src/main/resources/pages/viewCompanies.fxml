@@ -69,7 +69,7 @@
                   </Label>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
                      <children>
-                        <Button fx:id="edit" onAction="#editCompanyButton" mnemonicParsing="false" text="Editar" textAlignment="CENTER" HBox.hgrow="ALWAYS">
+                        <Button fx:id="edit" mnemonicParsing="false" onAction="#editCompanyButton" text="Editar" textAlignment="CENTER" HBox.hgrow="ALWAYS">
                            <styleClass>
                               <String fx:value="btn" />
                               <String fx:value="btn-outline-primary" />
@@ -100,19 +100,19 @@
                   </Label>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
                      <children>
-                        <Button fx:id="tutor" mnemonicParsing="false" text="Personas" textAlignment="CENTER">
+                        <Button fx:id="people" mnemonicParsing="false" onAction="#viewAllCompanyPeople" text="Personas" textAlignment="CENTER">
                            <styleClass>
                               <String fx:value="btn" />
                               <String fx:value="btn-outline-info" />
                            </styleClass>
                         </Button>
-                        <Button fx:id="student" mnemonicParsing="false" text="Alumnos" textAlignment="CENTER" HBox.hgrow="ALWAYS">
+                        <Button fx:id="student" mnemonicParsing="false" onAction="#viewAllCompanyStudents" text="Alumnos" textAlignment="CENTER" HBox.hgrow="ALWAYS">
                            <styleClass>
                               <String fx:value="btn" />
                               <String fx:value="btn-outline-info" />
                            </styleClass>
                         </Button>
-                        <Button fx:id="employee" mnemonicParsing="false" text="Empleados" textAlignment="CENTER">
+                        <Button fx:id="employee" mnemonicParsing="false" onAction="#viewCompamyEmployees" text="Empleados" textAlignment="CENTER">
                            <styleClass>
                               <String fx:value="btn" />
                               <String fx:value="btn-outline-info" />

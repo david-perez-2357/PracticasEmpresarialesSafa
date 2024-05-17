@@ -47,7 +47,7 @@ public class IndexController {
 
     @FXML
     public void seeAllPeople() throws SQLException {
-        ViewPeopleApp viewPeopleApp = new ViewPeopleApp(getAllPeople());
+        ViewPeopleApp viewPeopleApp = new ViewPeopleApp(getAllPeople(), "Personas");
 
         try {
             viewPeopleApp.start(new Stage());

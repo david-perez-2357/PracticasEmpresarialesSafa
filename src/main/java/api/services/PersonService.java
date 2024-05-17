@@ -133,6 +133,31 @@ public class PersonService {
         return convertToPeopleObjects(people);
     }
 
+    public static List<Person> getPeopleByCompany(Company company) throws SQLException {
+        ResultSet people = db.executePreparedQuery("""
+            SELECT p.*, r.id as role_id, r.nombre as role_name
+            FROM persona p
+            JOIN rol r ON p.rol_id = r.id
+            JOIN empresa e ON p.id = e.id_responsable OR p.id = e.id_tutor_laboral
+            WHERE e.codigo_empresa = ?
+        """, company.getCompanyCode());
+
+        return convertToPeopleObjects(people);
+    }
+
+    public static List<Person> getStudentsByCompany(Company company) throws SQLException {
+        ResultSet people = db.executePreparedQuery("""
+            SELECT p.*, r.id as role_id, r.nombre as role_name
+            FROM persona p
+            JOIN rol r ON p.rol_id = r.id and r.nombre = 'alumno'
+            JOIN alumno_empresa ae ON p.id = ae.id_alumno
+            JOIN empresa e ON ae.id_empresa = e.codigo_empresa
+            WHERE e.codigo_empresa = ?
+        """, company.getCompanyCode());
+
+        return convertToPeopleObjects(people);
+    }
+
     /**
      * Check if a person exists in the database
      * @param person

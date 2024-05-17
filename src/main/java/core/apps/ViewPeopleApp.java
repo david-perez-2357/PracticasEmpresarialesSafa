@@ -13,6 +13,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import static api.services.CompanyService.getAllCompanies;
+
 
 public class ViewPeopleApp extends Application {
     private Scene scene;
@@ -20,8 +22,11 @@ public class ViewPeopleApp extends Application {
 
     private List<Person> data;
 
-    public ViewPeopleApp(List<Person> data) {
+    private String  title = "Personas";
+
+    public ViewPeopleApp(List<Person> data, String title) {
         this.data = data;
+        this.title = title;
     }
 
     public ViewPeopleApp() {
@@ -33,11 +38,11 @@ public class ViewPeopleApp extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(ViewPeopleController.class.getResource("/pages/viewPeople.fxml"));
 
         // Get the controller and initialize the table
-        controller = new ViewPeopleController(data);
+        controller = new ViewPeopleController(data, title);
         fxmlLoader.setController(controller);
 
         // Set the scene
-        scene = new Scene(fxmlLoader.load(), 800, 500);
+        scene = new Scene(fxmlLoader.load(), 800, 550);
         stage.setTitle("Personas - Prácticas Empresariales SAFA");
         stage.setScene(scene);
         stage.show();
@@ -47,11 +52,23 @@ public class ViewPeopleApp extends Application {
 
         // Close event
         stage.setOnCloseRequest(e -> {
-            IndexApp indexApp = new IndexApp();
-            try {
-                indexApp.start(new Stage());
-            } catch (IOException | SQLException ioException) {
-                ioException.printStackTrace();
+            if (title.equals("Personas")) {
+                // If the title is "Personas", we are viewing people
+                IndexApp indexApp = new IndexApp();
+                try {
+                    indexApp.start(new Stage());
+                } catch (IOException | SQLException ioException) {
+                    ioException.printStackTrace();
+                }
+            }else {
+                // If the title is not "Personas", we are viewing people from a company
+                try {
+                    List<Company> companies = getAllCompanies();
+                    ViewCompaniesApp viewCompaniesApp = new ViewCompaniesApp(companies);
+                    viewCompaniesApp.start(new Stage());
+                } catch (IOException | SQLException ioException) {
+                    ioException.printStackTrace();
+                }
             }
         });
     }
