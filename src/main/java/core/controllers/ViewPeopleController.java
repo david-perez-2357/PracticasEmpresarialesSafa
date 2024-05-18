@@ -2,6 +2,7 @@ package core.controllers;
 
 import api.models.Person;
 import api.models.Role;
+import core.apps.ManagePersonApp;
 import core.utils.AlertMessage;
 import core.utils.DataFileManager;
 import core.utils.TableViewManager;
@@ -11,6 +12,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseButton;
 import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import javafx.stage.Window;
 
 import javax.xml.bind.JAXBException;
@@ -261,6 +263,18 @@ public class ViewPeopleController {
 
     @FXML
     public void editPersonButton() {
-        System.out.println("Edit button clicked");
+        // Get the selected person
+        Person selectedPerson = (Person) peopleTable.getSelectionModel().getSelectedItem();
+
+        // Open the edit person window
+        ManagePersonApp managePersonController = new ManagePersonApp(selectedPerson);
+        try {
+            managePersonController.start(new Stage());
+        } catch (IOException | SQLException e) {
+            e.printStackTrace();
+        }
+
+        // Close the window
+        peopleTable.getScene().getWindow().hide();
     }
 }

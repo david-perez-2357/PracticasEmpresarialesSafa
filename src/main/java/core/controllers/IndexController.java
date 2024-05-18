@@ -1,9 +1,6 @@
 package core.controllers;
 
-import core.apps.ManageAssignationApp;
-import core.apps.ManageCompanyApp;
-import core.apps.ViewCompaniesApp;
-import core.apps.ViewPeopleApp;
+import core.apps.*;
 import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
@@ -52,6 +49,21 @@ public class IndexController {
 
         try {
             viewPeopleApp.start(new Stage());
+            if (personImage != null) {
+                Stage stage = (Stage) personImage.getScene().getWindow();
+                stage.close();
+            }
+        } catch (IOException | SQLException ioException) {
+            ioException.printStackTrace();
+        }
+    }
+
+    @FXML
+    public void addPerson() {
+        ManagePersonApp managePersonApp = new ManagePersonApp();
+
+        try {
+            managePersonApp.start(new Stage());
             Stage stage = (Stage) personImage.getScene().getWindow();
             stage.close();
         } catch (IOException | SQLException ioException) {

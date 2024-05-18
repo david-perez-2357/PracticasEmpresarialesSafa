@@ -1,9 +1,9 @@
 package core.apps;
 
-import api.models.Company;
 import api.models.Person;
 import core.controllers.IndexController;
 import core.controllers.ManageCompanyController;
+import core.controllers.ManagePersonController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -12,55 +12,47 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.sql.SQLException;
 
-public class ManageCompanyApp extends Application {
-    private final Company company;
-    private final Person workManager;
-    private final Person workTutor;
+public class ManagePersonApp extends Application {
+    private final Person person;
 
-    public ManageCompanyApp() {
-        this.company = null;
-        this.workManager = null;
-        this.workTutor = null;
+    public ManagePersonApp() {
+        this.person = null;
     }
 
-    public ManageCompanyApp(Company company, Person workManager, Person workTutor) {
-        this.company = company;
-        this.workManager = workManager;
-        this.workTutor = workTutor;
+    public ManagePersonApp(Person person) {
+        this.person = person;
     }
 
     @Override
     public void start(Stage stage) throws IOException, SQLException {
-        FXMLLoader fxmlLoader = new FXMLLoader(ManageCompanyApp.class.getResource("/pages/manageCompany.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(ManagePersonApp.class.getResource("/pages/managePerson.fxml"));
 
         // Get the controller and initialize the file
-        ManageCompanyController controller = new ManageCompanyController();
-        controller.setCompany(company);
-        controller.setCompanyWorkManager(workManager);
-        controller.setCompanyWorkTutor(workTutor);
+        ManagePersonController controller = new ManagePersonController();
+        controller.setPerson(person);
 
-        if (company != null) {
+        if (person != null) {
             controller.setIsEdit(true);
         }
 
         fxmlLoader.setController(controller);
 
         // Set the scene
-        Scene scene = new Scene(fxmlLoader.load(), 800, 750);
-        stage.setTitle("Gestión de empresas - Prácticas Empresariales SAFA");
+        Scene scene = new Scene(fxmlLoader.load(), 800, 470);
+        stage.setTitle("Gestión de personas - Prácticas Empresariales SAFA");
         stage.setScene(scene);
         stage.show();
 
         // Add the stylesheet to the scene
-        scene.getStylesheets().add(String.valueOf(ManageCompanyApp.class.getResource("/css/bootstrap.css")));
+        scene.getStylesheets().add(String.valueOf(ManagePersonApp.class.getResource("/css/bootstrap.css")));
 
         // Close event
         stage.setOnCloseRequest(e -> {
-            if (company != null) {
+            if (person != null) {
                 // If the company is not null, we are editing a company
                 IndexController indexController = new IndexController();
                 try {
-                    indexController.seeAllCompanies();
+                    indexController.seeAllPeople();
                 } catch (SQLException sqlException) {
                     sqlException.printStackTrace();
                 }

@@ -41,7 +41,7 @@
                               <String fx:value="btn-success" />
                            </styleClass>
                         </Button>
-                        <Button mnemonicParsing="false" text="Añadir nueva">
+                        <Button mnemonicParsing="false" onAction="#addPerson" text="Añadir nueva">
                            <styleClass>
                               <String fx:value="btn" />
                               <String fx:value="btn-success" />

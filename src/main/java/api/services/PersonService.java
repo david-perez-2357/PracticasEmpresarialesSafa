@@ -224,6 +224,19 @@ public class PersonService {
     }
 
     /**
+     * Update a person in the database
+     * @param person
+     * @throws SQLException
+     */
+    public static void updatePerson(Person person) throws SQLException {
+        db.executePreparedUpdate("""
+                    UPDATE persona
+                    SET dni = ?, nombre = ?, apellidos = ?, telefono = ?, email = ?, rol_id = ?
+                    WHERE id = ?
+                """, person.getDni(), person.getName(), person.getSurnames(), person.getTelephone(), person.getEmail(), person.getRole().getId(), person.getId());
+    }
+
+    /**
      * Delete a person in the database
      * @param person
      * @throws SQLException
