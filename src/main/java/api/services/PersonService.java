@@ -99,6 +99,40 @@ public class PersonService {
     }
 
     /**
+     * Get the free work managers from the database
+     * @return
+     * @throws SQLException
+     */
+    public static List<Person> getFreeWorkManagers() throws SQLException {
+        ResultSet workManagers = db.executePreparedQuery("""
+            SELECT p.*, r.id as role_id, r.nombre as role_name
+            FROM persona p
+            JOIN rol r ON p.rol_id = r.id
+            LEFT JOIN empresa e ON p.id = e.id_responsable
+            WHERE e.id_responsable IS NULL and r.id = 4
+        """);
+
+        return convertToPeopleObjects(workManagers);
+    }
+
+    /**
+     * Get the free work tutors from the database
+     * @return
+     * @throws SQLException
+     */
+    public static List<Person> getFreeWorkTutors() throws SQLException {
+        ResultSet workTutors = db.executePreparedQuery("""
+            SELECT p.*, r.id as role_id, r.nombre as role_name
+            FROM persona p
+            JOIN rol r ON p.rol_id = r.id
+            LEFT JOIN empresa e ON p.id = e.id_tutor_laboral
+            WHERE e.id_tutor_laboral IS NULL and r.id = 3
+        """);
+
+        return convertToPeopleObjects(workTutors);
+    }
+
+    /**
      * Get the work tutor from the database
      * @param company
      * @return

@@ -18,8 +18,7 @@ import java.util.List;
 import static api.services.CompanyService.addCompany;
 import static api.services.CompanyService.updateCompany;
 import static api.services.ModalityService.getAllModalities;
-import static api.services.PersonService.getAllRoles;
-import static api.services.PersonService.getPeopleByRole;
+import static api.services.PersonService.*;
 import static api.services.WorkdayService.getAllWorkdays;
 
 public class ManageCompanyController {
@@ -87,11 +86,11 @@ public class ManageCompanyController {
 
         // Get all people with the work manager and work tutor roles
         assert workManagerRole != null;
-        List<Person> managers = getPeopleByRole(workManagerRole);
+        List<Person> managers = getFreeWorkManagers();
         workManager.getItems().addAll(managers);
 
         assert workTutorRole != null;
-        List<Person> tutors = getPeopleByRole(workTutorRole);
+        List<Person> tutors = getFreeWorkTutors();
         workTutor.getItems().addAll(tutors);
 
         if (isEdit) {
