@@ -2,7 +2,7 @@
 Proyecto realizado por David Pérez Fernández en Java FX para la asignatura de entonos de desarrollo.
 
 ## Configuración inicial
-Crear un archivo llamado .env en `src > main > java` que contenga los siguientes campos:
+Crear un archivo llamado .env en `src > main > resources` que contenga los siguientes campos:
 
 ```env
 DB_LANGUAGE=mariadb                    // mariadb, mysql
