@@ -11,6 +11,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.Objects;
 
 public class ManagePersonApp extends Application {
     private final Person person;
@@ -66,6 +67,9 @@ public class ManagePersonApp extends Application {
                 }
             }
         });
+
+        // Set the window image
+        stage.getIcons().add(new javafx.scene.image.Image(Objects.requireNonNull(IndexApp.class.getResourceAsStream("/media/safa.jpg"))));
     }
 
     public static void main(String[] args) {

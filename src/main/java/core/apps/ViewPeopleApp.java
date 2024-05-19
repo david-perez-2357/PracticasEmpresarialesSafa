@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import static api.services.CompanyService.getAllCompanies;
 
@@ -71,6 +72,9 @@ public class ViewPeopleApp extends Application {
                 }
             }
         });
+
+        // Set the window image
+        stage.getIcons().add(new javafx.scene.image.Image(Objects.requireNonNull(IndexApp.class.getResourceAsStream("/media/safa.jpg"))));
     }
 
     public static void main(String[] args) {

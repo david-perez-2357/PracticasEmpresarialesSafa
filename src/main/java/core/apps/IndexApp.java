@@ -8,6 +8,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.Objects;
 
 import static javafx.application.Application.launch;
 
@@ -29,6 +30,9 @@ public class IndexApp extends Application {
 
         // Get the controller and initialize the table
         controller = fxmlLoader.getController();
+
+        // Set the window image
+        stage.getIcons().add(new javafx.scene.image.Image(Objects.requireNonNull(IndexApp.class.getResourceAsStream("/media/safa.jpg"))));
     }
 
     public static void main(String[] args) {

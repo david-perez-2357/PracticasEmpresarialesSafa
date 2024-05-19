@@ -11,6 +11,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.Objects;
 
 public class ManageCompanyApp extends Application {
     private final Company company;
@@ -74,6 +75,9 @@ public class ManageCompanyApp extends Application {
                 }
             }
         });
+
+        // Set the window image
+        stage.getIcons().add(new javafx.scene.image.Image(Objects.requireNonNull(IndexApp.class.getResourceAsStream("/media/safa.jpg"))));
     }
 
     public static void main(String[] args) {
