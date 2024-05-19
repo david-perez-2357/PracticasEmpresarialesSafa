@@ -400,13 +400,16 @@
     -fx-background-color: #fff;
     /*-fx-padding: 10px;*/
     /*-fx-border-width: 1px;*/
-    -fx-border-color: #dee2e6;
+    /*-fx-border-color: #dee2e6;*/
+    -fx-border-color: #d2d2d2;
     -fx-border-width: 0 1 1 1;
     /*-fx-border-radius: 4px;*/
 }
 
 .table-view .column-header {
-    -fx-background-color: #f8f9fa;
+    /*-fx-background-color: #f8f9fa;*/
+    -fx-background-color: #81e893;
+    -fx-text-fill: #fff;
     /*-fx-border-width: 1px;*/
     -fx-border-color: #efefef;
     -fx-font-weight: bold;
