@@ -91,12 +91,12 @@
                   <Insets />
                </HBox.margin>
                <padding>
-                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                  <Insets bottom="20.0" left="10.0" right="10.0" top="10.0" />
                </padding>
             </VBox>
             <VBox alignment="CENTER" prefHeight="118.0" prefWidth="0.0" spacing="10.0" HBox.hgrow="ALWAYS">
                <padding>
-                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                  <Insets bottom="20.0" left="10.0" right="10.0" top="10.0" />
                </padding>
                <styleClass>
                   <String fx:value="alert-container" />
@@ -153,7 +153,7 @@
                   </HBox>
                </children>
                <padding>
-                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                  <Insets bottom="20.0" left="10.0" right="10.0" top="10.0" />
                </padding>
                <styleClass>
                   <String fx:value="alert-container" />
